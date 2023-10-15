@@ -1,7 +1,25 @@
-[gd_scene format=3 uid="uid://b35ak1r6icmdw"]
+[gd_scene load_steps=5 format=3 uid="uid://b35ak1r6icmdw"]
+
+[ext_resource type="PackedScene" uid="uid://ddwnk70ycewlm" path="res://scenes/object.tscn" id="1_bkojk"]
+[ext_resource type="Shader" path="res://shaders/ramp.gdshader" id="2_bdl6g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1yib"]
+shader = ExtResource("2_bdl6g")
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2qgln"]
+b = Vector2(801, 599)
 
 [node name="Level" type="Node2D"]
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 800.0
 offset_bottom = 600.0
+
+[node name="Object" parent="." instance=ExtResource("1_bkojk")]
+position = Vector2(346, 58)
+
+[node name="Ramp" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ramp"]
+material = SubResource("ShaderMaterial_c1yib")
+shape = SubResource("SegmentShape2D_2qgln")
