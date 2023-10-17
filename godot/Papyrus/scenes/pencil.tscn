@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqxj1h635r1a0"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_r488i"]
+b = Vector2(6, 0)
+
+[node name="pencil" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_r488i")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -1.0
+offset_right = 6.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
