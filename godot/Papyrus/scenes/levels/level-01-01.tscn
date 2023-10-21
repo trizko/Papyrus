@@ -12,3 +12,4 @@ offset_bottom = 600.0
 
 [node name="Object" parent="." instance=ExtResource("1_bkojk")]
 position = Vector2(26, 12)
+gravity_scale = 0.25
