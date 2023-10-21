@@ -4,7 +4,7 @@ var rigidbody_scene = preload("res://scenes/pencil.tscn")
 var is_drawing = false
 
 func _ready():
-	pass
+	$Object.gravity_scale = 0.0
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -20,3 +20,7 @@ func draw_at_point(pos):
 	var body = rigidbody_scene.instantiate()
 	body.global_position = pos
 	add_child(body)
+
+func _on_play_button_pressed():
+	print("hello")
+	$Object.gravity_scale = 0.30
