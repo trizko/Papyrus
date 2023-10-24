@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b35ak1r6icmdw"]
+[gd_scene load_steps=4 format=3 uid="uid://b35ak1r6icmdw"]
 
-[ext_resource type="Script" path="res://scenes/levels/level-01-01.gd" id="1_8usbn"]
 [ext_resource type="PackedScene" uid="uid://ddwnk70ycewlm" path="res://scenes/object.tscn" id="1_bkojk"]
+[ext_resource type="Script" path="res://scripts/level-01-01.gd" id="1_j26vg"]
+[ext_resource type="PackedScene" uid="uid://dkpq67idphey1" path="res://scenes/play_pause_button.tscn" id="3_ax07w"]
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_8usbn")
+script = ExtResource("1_j26vg")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 800.0
@@ -13,3 +14,9 @@ offset_bottom = 600.0
 [node name="Object" parent="." instance=ExtResource("1_bkojk")]
 position = Vector2(26, 12)
 gravity_scale = 0.25
+
+[node name="PlayPauseButton" parent="." instance=ExtResource("3_ax07w")]
+offset_left = 382.0
+offset_top = 15.0
+offset_right = 438.0
+offset_bottom = 64.0

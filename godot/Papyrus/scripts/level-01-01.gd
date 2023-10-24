@@ -6,7 +6,7 @@ var is_drawing = false
 func _ready():
 	$Object.gravity_scale = 0.0
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
 			is_drawing = true
