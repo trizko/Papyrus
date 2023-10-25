@@ -20,3 +20,5 @@ offset_left = 382.0
 offset_top = 15.0
 offset_right = 438.0
 offset_bottom = 64.0
+
+[connection signal="toggled" from="PlayPauseButton" to="." method="_on_play_pause_button_toggled"]

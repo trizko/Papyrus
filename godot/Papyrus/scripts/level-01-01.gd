@@ -21,6 +21,6 @@ func draw_at_point(pos):
 	body.global_position = pos
 	add_child(body)
 
-func _on_play_button_pressed():
+func _on_play_pause_button_toggled(button_pressed):
 	print("hello")
 	$Object.gravity_scale = 0.30
