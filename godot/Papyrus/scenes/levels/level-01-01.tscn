@@ -24,9 +24,6 @@ offset_right = 438.0
 offset_bottom = 64.0
 
 [node name="Goal" parent="." instance=ExtResource("4_0xt3j")]
-offset_left = 376.0
-offset_top = 516.0
-offset_right = 463.0
-offset_bottom = 526.0
+position = Vector2(358, 479)
 
 [connection signal="toggled" from="PlayPauseButton" to="." method="_on_play_pause_button_toggled"]
