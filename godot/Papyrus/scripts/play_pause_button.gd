@@ -17,7 +17,7 @@ func update_texture():
 	else:
 		self.texture_normal = preload("res://art/images/play.svg")
 
-func _on_toggled(button_pressed):
+func _on_toggled(_button_pressed):
 	if current_state == State.PLAY:
 		current_state = State.PAUSE
 	else:
