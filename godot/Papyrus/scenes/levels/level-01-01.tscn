@@ -16,6 +16,8 @@ mouse_filter = 2
 [node name="Object" parent="." instance=ExtResource("1_bkojk")]
 position = Vector2(26, 12)
 gravity_scale = 0.25
+max_contacts_reported = 1
+contact_monitor = true
 
 [node name="PlayPauseButton" parent="." instance=ExtResource("3_ax07w")]
 offset_left = 382.0
@@ -26,4 +28,5 @@ offset_bottom = 64.0
 [node name="Goal" parent="." instance=ExtResource("4_0xt3j")]
 position = Vector2(358, 479)
 
+[connection signal="body_entered" from="Object" to="." method="_on_object_body_entered"]
 [connection signal="toggled" from="PlayPauseButton" to="." method="_on_play_pause_button_toggled"]

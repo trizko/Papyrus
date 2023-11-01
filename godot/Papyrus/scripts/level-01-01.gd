@@ -24,3 +24,5 @@ func draw_at_point(pos):
 func _on_play_pause_button_toggled(_button_pressed):
 	$Object.gravity_scale = 1.0
 
+func _on_object_body_entered(body):
+	print("collided with: %s" % body)
