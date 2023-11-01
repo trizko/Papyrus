@@ -6,12 +6,12 @@ size = Vector2(87, 10)
 [node name="StaticBody2D (Goal)" type="StaticBody2D"]
 metadata/_edit_group_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(43.5, 5)
+shape = SubResource("RectangleShape2D_4i0tp")
+
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 87.0
 offset_bottom = 10.0
 color = Color(0, 1, 0, 1)
 metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(43.5, 5)
-shape = SubResource("RectangleShape2D_4i0tp")
