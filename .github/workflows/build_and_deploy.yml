@@ -1,4 +1,4 @@
-name: Build and Deploy to itch.io
+name: CI/CD
 
 # The workflow_dispatch event signifies that this action is deployed manually 
 # through the Github UI
