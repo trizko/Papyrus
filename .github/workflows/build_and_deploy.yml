@@ -1,0 +1,51 @@
+name: Build and Deploy to itch.io
+
+# The workflow_dispatch event signifies that this action is deployed manually 
+# through the Github UI
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  
+    defaults:
+      run:
+        working-directory: ./godot/Papyrus/
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Download Godot
+      run: |
+        wget https://downloads.tuxfamily.org/godotengine/4.1.3/Godot_v4.1.3-stable_linux.x86_64.zip
+        unzip Godot_v4.1.3-stable_linux.x86_64.zip
+
+    - name: Download Godot Export Templates
+      run: |
+        wget https://downloads.tuxfamily.org/godotengine/4.1.3/Godot_v4.1.3-stable_export_templates.tpz
+        mkdir -p ~/.godot/templates/4.1.3
+        tar xvf Godot_v4.1.3-stable_export_templates.tpz -C ~/.godot/templates/4.1.3
+
+    - name: Export Game
+      run: |
+        ./Godot_v4.1.3-stable_linux.x86_64 --export "macOS" ../../builds/papyrus.zip
+
+    - name: Download butler
+      run: |
+        # Download butler
+        curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+        unzip butler.zip
+        chmod +x butler
+
+        # Verify butler installation
+        ./butler -V
+
+    - name: Deploy to itch.io
+      run: |
+        # Push to itch.io
+        ./butler push ../../builds/papyrus.zip tonloco/papyrus:osx-alpha
+      env:
+        BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+
