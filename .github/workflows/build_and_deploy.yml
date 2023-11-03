@@ -31,7 +31,7 @@ jobs:
 
     - name: Export Game
       run: |
-        ./Godot.app/Contents/MacOS/Godot --headless --export-release macOS ../../builds/papyrus.zip
+        ./Godot.app/Contents/MacOS/Godot --headless --export-debug macOS ../../builds/papyrus.zip
 
     - name: Download butler
       run: |
