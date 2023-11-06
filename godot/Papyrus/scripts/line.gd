@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+const LINE_WIDTH = 2
+
 # Member variables
 var start_point : Vector2
 var end_point : Vector2
@@ -28,4 +30,4 @@ func _input(event: InputEvent) -> void:
 
 func _draw():
 	if is_drawing:
-		draw_line(start_point, end_point, line.color, line.width)
+		draw_line(start_point, end_point, line.color, LINE_WIDTH)
