@@ -1,32 +1,53 @@
 extends StaticBody2D
 
-const LINE_WIDTH = 2
-
-# Member variables
 var start_point : Vector2
 var end_point : Vector2
 var is_drawing : bool = false
 var line : Line2D
+var collision_shape : CollisionPolygon2D
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				# when the mouse button is pressed down, start drawing
-				is_drawing = true
-				line = Line2D.new()
-				start_point = event.position
-				line.points = [start_point]
-			else:
-				# when the mouse button is released, stop drawing
-				is_drawing = false
-				add_child(line)
-				line = null
-	elif event is InputEventMouseMotion and is_drawing:
-		# while dragging, update the end point and draw the line
-		end_point = event.position
-		line.points = [start_point, end_point]
+func _ready():
+	line = $Line2D
+	line.width = 4
+	collision_shape = $CollisionPolygon2D
+	collision_shape.build_mode = CollisionPolygon2D.BUILD_SOLIDS
+
+func start_drawing(pos):
+	is_drawing = true
+	start_point = pos
+	line.points = [start_point]
+
+func finish_drawing():
+	is_drawing = false
+	update_collision_shape(line.points)
+
+func update_drawing(pos):
+	end_point = pos
+	line.points = [start_point, end_point]
+
+func update_collision_shape(points: PackedVector2Array) -> void:
+	if points.size() >= 2:
+		var width_half = line.width / 2.0
+		var normals = []
+		var polygon = PackedVector2Array()
+
+		# Calculate normals for each segment
+		for i in range(points.size() - 1):
+			var dir = points[i + 1] - points[i]
+			var normal = Vector2(-dir.y, dir.x).normalized() * width_half
+			normals.append(normal)
+
+		# Create a polygon shape by offsetting the line points by the normal
+		for i in range(points.size() - 1):
+			polygon.push_back(points[i] + normals[i])
+			polygon.push_back(points[i] - normals[i])
+
+		# Add the last segment's normals
+		polygon.push_back(points[points.size() - 1] + normals[normals.size() - 1])
+		polygon.push_back(points[points.size() - 1] - normals[normals.size() - 1])
+
+		collision_shape.polygon = polygon
 
 func _draw():
 	if is_drawing:
-		draw_line(start_point, end_point, line.color, LINE_WIDTH)
+		draw_line(start_point, end_point, Color.BLACK, line.width)

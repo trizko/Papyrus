@@ -1,13 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://oy7aw1kv4i2o"]
+[gd_scene load_steps=2 format=3 uid="uid://oy7aw1kv4i2o"]
 
 [ext_resource type="Script" path="res://scripts/line.gd" id="1_dcw6n"]
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_8e8ef"]
 
 [node name="line" type="StaticBody2D"]
 script = ExtResource("1_dcw6n")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("SegmentShape2D_8e8ef")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
 [node name="Line2D" type="Line2D" parent="."]
