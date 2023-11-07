@@ -1,25 +1,25 @@
 extends Node2D
 
-var rigidbody_scene = preload("res://scenes/pencil.tscn")
-var is_drawing = false
+var line_scene = preload("res://scenes/line.tscn")
+var current_line_instance = null
 
 func _ready():
 	$Object.gravity_scale = 0.0
 
 func _unhandled_input(event):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			is_drawing = true
-			draw_at_point(event.global_position)
-		else:
-			is_drawing = false
-	elif is_drawing and event is InputEventMouseMotion:
-		draw_at_point(event.global_position)
-
-func draw_at_point(pos):
-	var body = rigidbody_scene.instantiate()
-	body.global_position = pos
-	add_child(body)
+			# Start a new line
+			current_line_instance = line_scene.instantiate()
+			add_child(current_line_instance)
+			current_line_instance.start_drawing(event.position)
+		elif current_line_instance:
+			# Finish the line drawing
+			current_line_instance.finish_drawing()
+			current_line_instance = null
+	elif event is InputEventMouseMotion and current_line_instance:
+		# Update the current line instance with the new mouse position
+		current_line_instance.update_drawing(event.position)
 
 func _on_play_pause_button_toggled(_button_pressed):
 	$Object.gravity_scale = 1.0
