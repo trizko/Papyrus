@@ -9,16 +9,13 @@ func _ready():
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			# Start a new line
 			current_line_instance = line_scene.instantiate()
 			add_child(current_line_instance)
 			current_line_instance.start_drawing(event.position)
 		elif current_line_instance:
-			# Finish the line drawing
 			current_line_instance.finish_drawing()
 			current_line_instance = null
 	elif event is InputEventMouseMotion and current_line_instance:
-		# Update the current line instance with the new mouse position
 		current_line_instance.update_drawing(event.position)
 
 func _on_play_pause_button_toggled(_button_pressed):
@@ -26,6 +23,5 @@ func _on_play_pause_button_toggled(_button_pressed):
 
 func _on_object_body_entered(body):
 	if body.name == "Goal":
-		print("collided with: %s" % body)
 		$Object.gravity_scale = 0.0
 		$Object.linear_velocity = Vector2.ZERO
