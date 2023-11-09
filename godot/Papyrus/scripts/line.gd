@@ -10,6 +10,9 @@ func _ready():
 	line = $Line2D
 	line.set_width(10)
 	line.set_default_color(Color.BLACK)
+	line.set_begin_cap_mode(Line2D.LINE_CAP_ROUND)
+	line.set_end_cap_mode(Line2D.LINE_CAP_ROUND)
+
 	collision_shape = $CollisionPolygon2D
 	collision_shape.build_mode = CollisionPolygon2D.BUILD_SOLIDS
 
