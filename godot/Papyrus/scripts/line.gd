@@ -8,7 +8,7 @@ var collision_shape : CollisionPolygon2D
 
 func _ready():
 	line = $Line2D
-	line.width = 4
+	line.set_width(10)
 	line.set_default_color(Color.BLACK)
 	collision_shape = $CollisionPolygon2D
 	collision_shape.build_mode = CollisionPolygon2D.BUILD_SOLIDS
