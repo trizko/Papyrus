@@ -18,6 +18,7 @@ func _process(delta):
 func start_drawing(pos):
 	is_drawing = true
 	start_point = pos
+	end_point = pos
 	line.points = [start_point]
 
 func finish_drawing():
