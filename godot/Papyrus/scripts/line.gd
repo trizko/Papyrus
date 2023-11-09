@@ -16,7 +16,7 @@ func _ready():
 	collision_shape = $CollisionPolygon2D
 	collision_shape.build_mode = CollisionPolygon2D.BUILD_SOLIDS
 
-func _process(delta):
+func _process(_delta):
 	queue_redraw()
 
 func start_drawing(pos):
