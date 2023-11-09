@@ -9,7 +9,6 @@
 script = ExtResource("1_j26vg")
 
 [node name="Background" type="ColorRect" parent="."]
-visible = false
 offset_right = 800.0
 offset_bottom = 600.0
 mouse_filter = 2
