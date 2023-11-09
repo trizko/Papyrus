@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://shaders/object.gdshader" id="1_cdp17"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vjyvr"]
-radius = 21.0
+radius = 18.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pkfe1"]
 shader = ExtResource("1_cdp17")
