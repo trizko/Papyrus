@@ -13,7 +13,7 @@ func _ready():
 
 func update_texture():
 	if current_state == State.PLAY:
-		self.texture_normal = preload("res://art/images/pause.svg")
+		self.texture_normal = preload("res://art/images/reload.svg")
 	else:
 		self.texture_normal = preload("res://art/images/play.svg")
 
