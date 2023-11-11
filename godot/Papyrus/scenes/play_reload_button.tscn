@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dkpq67idphey1"]
 
-[ext_resource type="Script" path="res://scripts/play_pause_button.gd" id="1_458f3"]
+[ext_resource type="Script" path="res://scripts/play_reload_button.gd" id="1_458f3"]
 
 [node name="PlayPauseButton" type="TextureButton"]
 toggle_mode = true

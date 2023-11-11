@@ -1,12 +1,11 @@
 extends TextureButton
 
-# Assuming you've set the Play SVG as Normal and Pause as Pressed.
 enum State {
 	PLAY,
-	PAUSE
+	RELOAD
 }
 
-var current_state: State = State.PAUSE
+var current_state: State = State.RELOAD
 
 func _ready():
 	update_texture()
@@ -19,7 +18,7 @@ func update_texture():
 
 func _on_toggled(_button_pressed):
 	if current_state == State.PLAY:
-		current_state = State.PAUSE
+		current_state = State.RELOAD
 	else:
 		current_state = State.PLAY
 

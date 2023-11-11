@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ddwnk70ycewlm" path="res://scenes/object.tscn" id="1_bkojk"]
 [ext_resource type="Script" path="res://scripts/level-01-01.gd" id="1_j26vg"]
-[ext_resource type="PackedScene" uid="uid://dkpq67idphey1" path="res://scenes/play_pause_button.tscn" id="3_ax07w"]
+[ext_resource type="PackedScene" uid="uid://dkpq67idphey1" path="res://scenes/play_reload_button.tscn" id="3_ax07w"]
 [ext_resource type="PackedScene" uid="uid://b6eka4fbdvbk3" path="res://scenes/goal.tscn" id="4_0xt3j"]
 
 [node name="Level" type="Node2D"]
@@ -19,7 +19,7 @@ gravity_scale = 0.25
 max_contacts_reported = 1
 contact_monitor = true
 
-[node name="PlayPauseButton" parent="." instance=ExtResource("3_ax07w")]
+[node name="PlayReloadButton" parent="." instance=ExtResource("3_ax07w")]
 offset_left = 382.0
 offset_top = 15.0
 offset_right = 438.0
@@ -29,4 +29,4 @@ offset_bottom = 64.0
 position = Vector2(358, 479)
 
 [connection signal="body_entered" from="Object" to="." method="_on_object_body_entered"]
-[connection signal="toggled" from="PlayPauseButton" to="." method="_on_play_pause_button_toggled"]
+[connection signal="toggled" from="PlayReloadButton" to="." method="_on_play_reload_button_toggled"]

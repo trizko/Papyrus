@@ -18,7 +18,7 @@ func _unhandled_input(event):
 	elif event is InputEventMouseMotion and current_line_instance:
 		current_line_instance.update_drawing(event.position)
 
-func _on_play_pause_button_toggled(button_pressed):
+func _on_play_reload_button_toggled(button_pressed):
 	if (button_pressed):
 		$Object.gravity_scale = 1.0
 	else:
