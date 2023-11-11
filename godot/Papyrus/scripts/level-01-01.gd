@@ -18,8 +18,11 @@ func _unhandled_input(event):
 	elif event is InputEventMouseMotion and current_line_instance:
 		current_line_instance.update_drawing(event.position)
 
-func _on_play_pause_button_toggled(_button_pressed):
-	$Object.gravity_scale = 1.0
+func _on_play_pause_button_toggled(button_pressed):
+	if (button_pressed):
+		$Object.gravity_scale = 1.0
+	else:
+		get_tree().reload_current_scene()
 
 func _on_object_body_entered(body):
 	if body.name == "Goal":
