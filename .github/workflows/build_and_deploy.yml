@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-mac:
     runs-on: macos-latest
-  
+
     defaults:
       run:
         working-directory: ./godot/Papyrus/
@@ -31,7 +31,7 @@ jobs:
 
     - name: Export Game
       run: |
-        ./Godot.app/Contents/MacOS/Godot --headless --export-debug macOS ../../builds/papyrus.zip
+        ./Godot.app/Contents/MacOS/Godot --headless --export-debug macOS ../../builds/macos/papyrus.zip
 
     - name: Download butler
       run: |
@@ -46,7 +46,51 @@ jobs:
     - name: Deploy to itch.io
       run: |
         # Push to itch.io
-        ./butler push ../../builds/papyrus.zip tonloco/papyrus:osx-alpha
+        ./butler push ../../builds/macos/papyrus.zip tonloco/papyrus:macos-alpha
+      env:
+        BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+
+  build-windows:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./godot/Papyrus/
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Download Godot
+      run: |
+        wget https://downloads.tuxfamily.org/godotengine/4.1.3/Godot_v4.1.3-stable_linux.x86_64.zip
+        unzip Godot_v4.1.3-stable_linux.x86_64.zip
+
+    - name: Download Godot Export Templates
+      run: |
+        wget https://downloads.tuxfamily.org/godotengine/4.1.3/Godot_v4.1.3-stable_export_templates.tpz
+        mkdir -v -p ~/.local/share/godot/templates
+        unzip Godot_v4.1.3-stable_export_templates.tpz
+        mv ./templates/* ~/.local/share/godot/templates/
+
+    - name: Export Game
+      run: |
+        Godot_v4.1.3-stable_linux.x86_64 --headless --export-debug win64 ../../builds/win64/papyrus.zip
+
+    - name: Download butler
+      run: |
+        # Download butler
+        curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+        unzip butler.zip
+        chmod +x butler
+
+        # Verify butler installation
+        ./butler -V
+
+    - name: Deploy to itch.io
+      run: |
+        # Push to itch.io
+        ./butler push ../../builds/win64/papyrus.zip tonloco/papyrus:win64-alpha
       env:
         BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
 
