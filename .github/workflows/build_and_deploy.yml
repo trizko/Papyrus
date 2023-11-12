@@ -70,9 +70,9 @@ jobs:
     - name: Download Godot Export Templates
       run: |
         wget https://downloads.tuxfamily.org/godotengine/4.1.3/Godot_v4.1.3-stable_export_templates.tpz
-        mkdir -v -p ~/.local/share/godot/templates
+        mkdir -v -p ~/.local/share/godot/export_templates/4.1.3.stable/
         unzip Godot_v4.1.3-stable_export_templates.tpz
-        mv ./templates/* ~/.local/share/godot/templates/
+        mv ./templates/* ~/.local/share/godot/export_templates/4.1.3.stable/
 
     - name: Export Game
       run: |
