@@ -25,12 +25,13 @@ jobs:
     - name: Download Godot Export Templates
       run: |
         wget https://downloads.tuxfamily.org/godotengine/4.1.3/Godot_v4.1.3-stable_export_templates.tpz
-        mkdir -p ~/Library/Application\ Support/Godot/export_templates/4.1.3.stable/
+        mkdir -v -p ~/Library/Application\ Support/Godot/export_templates/4.1.3.stable/
         unzip Godot_v4.1.3-stable_export_templates.tpz
         mv ./templates/* ~/Library/Application\ Support/Godot/export_templates/4.1.3.stable/
 
     - name: Export Game
       run: |
+        mkdir -v -p ../../builds/macos/
         ./Godot.app/Contents/MacOS/Godot --headless --export-debug macOS ../../builds/macos/papyrus.zip
 
     - name: Download butler
@@ -75,6 +76,7 @@ jobs:
 
     - name: Export Game
       run: |
+        mkdir -v -p ../../builds/win64/
         ./Godot_v4.1.3-stable_linux.x86_64 --headless --export-debug win64 ../../builds/win64/papyrus.zip
 
     - name: Download butler
