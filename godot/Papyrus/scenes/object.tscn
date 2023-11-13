@@ -9,6 +9,7 @@ radius = 18.0
 shader = ExtResource("1_cdp17")
 
 [node name="RigidBody2D (Object)" type="RigidBody2D"]
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(20, 20)

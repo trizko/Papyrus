@@ -18,6 +18,10 @@ func _unhandled_input(event):
 	elif event is InputEventMouseMotion and current_line_instance:
 		current_line_instance.update_drawing(event.position)
 
+func _on_button_pressed():
+	for line in get_tree().get_nodes_in_group("line"):
+		line.queue_free()
+
 func _on_play_reload_button_toggled(button_pressed):
 	if (button_pressed):
 		$Object.gravity_scale = 1.0

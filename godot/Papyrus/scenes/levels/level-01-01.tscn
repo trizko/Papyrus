@@ -28,5 +28,21 @@ offset_bottom = 64.0
 [node name="Goal" parent="." instance=ExtResource("4_0xt3j")]
 position = Vector2(358, 479)
 
+[node name="ClearButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 722.0
+offset_top = 20.0
+offset_right = 779.0
+offset_bottom = 51.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+text = "CLEAR"
+
 [connection signal="body_entered" from="Object" to="." method="_on_object_body_entered"]
 [connection signal="toggled" from="PlayReloadButton" to="." method="_on_play_reload_button_toggled"]
+[connection signal="pressed" from="ClearButton" to="." method="_on_button_pressed"]
