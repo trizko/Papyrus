@@ -9,6 +9,8 @@ radius = 18.0
 shader = ExtResource("1_cdp17")
 
 [node name="RigidBody2D (Object)" type="RigidBody2D"]
+max_contacts_reported = 1
+contact_monitor = true
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,10 +1,12 @@
 extends Node2D
 
 var line_scene = preload("res://scenes/line.tscn")
+var ball_scene = preload("res://scenes/object.tscn")
 var current_line_instance = null
+var Ball = null
 
 func _ready():
-	$Object.gravity_scale = 0.0
+	reset_ball()
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -24,11 +26,19 @@ func _on_button_pressed():
 
 func _on_play_reload_button_toggled(button_pressed):
 	if (button_pressed):
-		$Object.gravity_scale = 1.0
+		Ball.gravity_scale = 1.0
 	else:
-		get_tree().reload_current_scene()
+		Ball.queue_free()
+		reset_ball()
 
-func _on_object_body_entered(body):
+func _on_body_entered(body):
 	if body.name == "Goal":
-		$Object.gravity_scale = 0.0
-		$Object.linear_velocity = Vector2.ZERO
+		Ball.gravity_scale = 0.0
+		Ball.linear_velocity = Vector2.ZERO
+
+func reset_ball():
+	Ball = ball_scene.instantiate()
+	Ball.set_position($BallStartPosition.position)
+	add_child(Ball)
+	Ball.gravity_scale = 0.0
+	Ball.body_entered.connect(_on_body_entered)
