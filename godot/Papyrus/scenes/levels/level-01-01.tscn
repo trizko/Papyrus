@@ -7,37 +7,42 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_j26vg")
 
-[node name="Background" type="ColorRect" parent="."]
-offset_right = 1080.0
-offset_bottom = 1920.0
-mouse_filter = 2
-
 [node name="BallStartPosition" type="Marker2D" parent="."]
 position = Vector2(26, 12)
 
-[node name="PlayReloadButton" parent="." instance=ExtResource("3_ax07w")]
-offset_left = 382.0
-offset_top = 15.0
-offset_right = 438.0
-offset_bottom = 64.0
-
 [node name="Goal" parent="." instance=ExtResource("4_0xt3j")]
+z_index = 1
 position = Vector2(877, 1759)
 
-[node name="ClearButton" type="Button" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
+[node name="HUDContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = 722.0
-offset_top = 20.0
-offset_right = 779.0
-offset_bottom = 51.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+offset_right = 1080.0
+offset_bottom = 1920.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="HUDContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PlayReloadButton" parent="HUDContainer" instance=ExtResource("3_ax07w")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="ClearButton" type="Button" parent="HUDContainer"]
+custom_minimum_size = Vector2(160, 90)
+layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 8
+size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "CLEAR"
 
-[connection signal="toggled" from="PlayReloadButton" to="." method="_on_play_reload_button_toggled"]
-[connection signal="pressed" from="ClearButton" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="HUDContainer/PlayReloadButton" to="." method="_on_play_reload_button_toggled"]
+[connection signal="pressed" from="HUDContainer/ClearButton" to="." method="_on_button_pressed"]
