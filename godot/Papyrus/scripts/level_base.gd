@@ -20,7 +20,7 @@ func _unhandled_input(event):
 	elif event is InputEventMouseMotion and current_line_instance:
 		current_line_instance.update_drawing(event.position)
 
-func _on_button_pressed():
+func _on_clear_button_pressed():
 	for line in get_tree().get_nodes_in_group("line"):
 		line.queue_free()
 
@@ -42,3 +42,4 @@ func reset_ball():
 	add_child(Ball)
 	Ball.gravity_scale = 0.0
 	Ball.body_entered.connect(_on_body_entered)
+

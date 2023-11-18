@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://b35ak1r6icmdw"]
 
-[ext_resource type="Script" path="res://scripts/level-01-01.gd" id="1_j26vg"]
-[ext_resource type="PackedScene" uid="uid://dkpq67idphey1" path="res://scenes/play_reload_button.tscn" id="3_ax07w"]
-[ext_resource type="PackedScene" uid="uid://b6eka4fbdvbk3" path="res://scenes/goal.tscn" id="4_0xt3j"]
+[ext_resource type="Script" path="res://scripts/level_base.gd" id="1_8t2oc"]
+[ext_resource type="PackedScene" uid="uid://b6eka4fbdvbk3" path="res://scenes/goal.tscn" id="1_edvcx"]
+[ext_resource type="PackedScene" uid="uid://dkpq67idphey1" path="res://scenes/play_reload_button.tscn" id="2_mhjdd"]
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_j26vg")
+script = ExtResource("1_8t2oc")
 
 [node name="BallStartPosition" type="Marker2D" parent="."]
 position = Vector2(26, 12)
 
-[node name="Goal" parent="." instance=ExtResource("4_0xt3j")]
+[node name="Goal" parent="." instance=ExtResource("1_edvcx")]
 z_index = 1
 position = Vector2(877, 1759)
 
@@ -30,7 +30,7 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 
-[node name="PlayReloadButton" parent="HUDContainer" instance=ExtResource("3_ax07w")]
+[node name="PlayReloadButton" parent="HUDContainer" instance=ExtResource("2_mhjdd")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -45,4 +45,4 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "CLEAR"
 
 [connection signal="toggled" from="HUDContainer/PlayReloadButton" to="." method="_on_play_reload_button_toggled"]
-[connection signal="pressed" from="HUDContainer/ClearButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HUDContainer/ClearButton" to="." method="_on_clear_button_pressed"]
