@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var line_scene = preload("res://scenes/line.tscn")
 var ball_scene = preload("res://scenes/object.tscn")

@@ -4,8 +4,40 @@
 [ext_resource type="PackedScene" uid="uid://b6eka4fbdvbk3" path="res://scenes/goal.tscn" id="1_edvcx"]
 [ext_resource type="PackedScene" uid="uid://dkpq67idphey1" path="res://scenes/play_reload_button.tscn" id="2_mhjdd"]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node"]
 script = ExtResource("1_8t2oc")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlayReloadButton" parent="Background" instance=ExtResource("2_mhjdd")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="ClearButton" type="Button" parent="Background"]
+custom_minimum_size = Vector2(160, 90)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_bottom = 90.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+text = "CLEAR"
 
 [node name="BallStartPosition" type="Marker2D" parent="."]
 position = Vector2(26, 12)
@@ -14,35 +46,5 @@ position = Vector2(26, 12)
 z_index = 1
 position = Vector2(877, 1759)
 
-[node name="HUDContainer" type="PanelContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1080.0
-offset_bottom = 1920.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="Background" type="ColorRect" parent="HUDContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="PlayReloadButton" parent="HUDContainer" instance=ExtResource("2_mhjdd")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="ClearButton" type="Button" parent="HUDContainer"]
-custom_minimum_size = Vector2(160, 90)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-text = "CLEAR"
-
-[connection signal="toggled" from="HUDContainer/PlayReloadButton" to="." method="_on_play_reload_button_toggled"]
-[connection signal="pressed" from="HUDContainer/ClearButton" to="." method="_on_clear_button_pressed"]
+[connection signal="toggled" from="Background/PlayReloadButton" to="." method="_on_play_reload_button_toggled"]
+[connection signal="pressed" from="Background/ClearButton" to="." method="_on_clear_button_pressed"]
