@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://6dqh0ber1lk8"]
+
+[ext_resource type="Shader" path="res://shaders/black_hole.gdshader" id="1_a8j61"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_acuag"]
+shader = ExtResource("1_a8j61")
+
+[node name="black_hole" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_acuag")
+offset_right = 40.0
+offset_bottom = 40.0
