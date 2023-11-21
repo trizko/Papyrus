@@ -2,10 +2,15 @@ extends Node
 
 var line_scene = preload("res://scenes/line.tscn")
 var ball_scene = preload("res://scenes/object.tscn")
+var obstacle_scene = preload("res://scenes/obstacle.tscn")
 var current_line_instance = null
 var Ball = null
 
 func _ready():
+	var obstacle = obstacle_scene.instantiate()
+	obstacle.start_point = Vector2(100, 400)
+	obstacle.end_point = Vector2(600, 400)
+	add_child(obstacle)
 	reset_ball()
 
 func _unhandled_input(event):
