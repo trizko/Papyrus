@@ -1,0 +1,30 @@
+{
+	"ball": {
+		"position_x": 50.0,
+		"position_y": 50.0
+	},
+	"obstacles": [
+		{
+			"start_point_x": 100.0,
+			"start_point_y": 400.0,
+			"end_point_x": 600.0,
+			"end_point_y": 400.0,
+		},
+		{
+			"start_point_x": 200.0,
+			"start_point_y": 800.0,
+			"end_point_x": 700.0,
+			"end_point_y": 800.0,
+		},
+		{
+			"start_point_x": 300.0,
+			"start_point_y": 1200.0,
+			"end_point_x": 800.0,
+			"end_point_y": 1200.0,
+		},
+	],
+	"goal": {
+		"position_x": 1000.0,
+		"position_y": 1800.0
+	}
+}
