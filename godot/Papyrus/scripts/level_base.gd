@@ -7,10 +7,14 @@ var current_line_instance = null
 var Ball = null
 
 func _ready():
-	var obstacle = obstacle_scene.instantiate()
-	obstacle.start_point = Vector2(100, 400)
-	obstacle.end_point = Vector2(600, 400)
-	add_child(obstacle)
+	var json_as_text = FileAccess.get_file_as_string("res://levels.json")
+	var level_data = JSON.parse_string(json_as_text)
+	for o in level_data["obstacles"]:
+		print(o)
+		var obstacle = obstacle_scene.instantiate()
+		obstacle.start_point = Vector2(o["start_point_x"], o["start_point_y"])
+		obstacle.end_point = Vector2(o["end_point_x"], o["end_point_y"])
+		add_child(obstacle)
 	reset_ball()
 
 func _unhandled_input(event):
