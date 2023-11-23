@@ -38,9 +38,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "CLEAR"
 
-[node name="BallStartPosition" type="Marker2D" parent="."]
-position = Vector2(100, 200)
-
 [node name="Goal" parent="." instance=ExtResource("1_edvcx")]
 z_index = 1
 position = Vector2(877, 1759)
