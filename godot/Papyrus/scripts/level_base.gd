@@ -3,6 +3,7 @@ extends Node
 var line_scene = preload("res://scenes/line.tscn")
 var ball_scene = preload("res://scenes/object.tscn")
 var obstacle_scene = preload("res://scenes/obstacle.tscn")
+var goal_scene = preload("res://scenes/goal.tscn")
 var ball_start_position = null
 var current_line_instance = null
 var Ball = null
@@ -25,6 +26,14 @@ func _ready():
 		obstacle.start_point = Vector2(o["start_point_x"], o["start_point_y"])
 		obstacle.end_point = Vector2(o["end_point_x"], o["end_point_y"])
 		add_child(obstacle)
+
+	# initialize goal
+	var goal = goal_scene.instantiate()
+	goal.position = Vector2(
+		level_data["goal"]["position_x"],
+		level_data["goal"]["position_y"],
+	)
+	add_child(goal)
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
