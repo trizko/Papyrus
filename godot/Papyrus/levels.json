@@ -1,4 +1,5 @@
 {
+	"max_lines": 2,
 	"ball": {
 		"position_x": 100.0,
 		"position_y": 200.0
