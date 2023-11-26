@@ -5,6 +5,7 @@ var ball_scene = preload("res://scenes/object.tscn")
 var obstacle_scene = preload("res://scenes/obstacle.tscn")
 var goal_scene = preload("res://scenes/goal.tscn")
 var line_count = 0
+var level_number = null
 var max_lines = null
 var ball_start_position = null
 var current_line_instance = null
@@ -13,7 +14,8 @@ var Ball = null
 func _ready():
 	# parse level data
 	var json_as_text = FileAccess.get_file_as_string("res://levels.json")
-	var level_data = JSON.parse_string(json_as_text)
+	var levels = JSON.parse_string(json_as_text)
+	var level_data = levels[level_number]
 
 	# get and set line count
 	max_lines = level_data["max_lines"]
