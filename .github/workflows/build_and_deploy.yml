@@ -17,13 +17,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Create Binaries Directory in Home
+      run: mkdir -v -p ~/bin
+
     - name: Download Godot
       run: |
+        cd ~/bin/
         wget https://downloads.tuxfamily.org/godotengine/4.1.3/Godot_v4.1.3-stable_macos.universal.zip
         unzip Godot_v4.1.3-stable_macos.universal.zip
 
     - name: Download Godot Export Templates
       run: |
+        cd ~/bin/
         wget https://downloads.tuxfamily.org/godotengine/4.1.3/Godot_v4.1.3-stable_export_templates.tpz
         mkdir -v -p ~/Library/Application\ Support/Godot/export_templates/4.1.3.stable/
         unzip Godot_v4.1.3-stable_export_templates.tpz
@@ -32,7 +37,7 @@ jobs:
     - name: Export Game
       run: |
         mkdir -v -p ../../builds/macos/
-        ./Godot.app/Contents/MacOS/Godot --headless --export-debug macOS ../../builds/macos/papyrus.zip
+        ~/bin/Godot.app/Contents/MacOS/Godot --headless --export-debug macOS ../../builds/macos/papyrus.zip
 
     - name: Download butler
       run: |
