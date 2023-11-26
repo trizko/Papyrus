@@ -37,7 +37,7 @@ jobs:
     - name: Export Game
       run: |
         mkdir -v -p ../../builds/macos/
-        ~/bin/Godot.app/Contents/MacOS/Godot --headless --export-debug macOS ../../builds/macos/papyrus.zip
+        ~/bin/Godot.app/Contents/MacOS/Godot --verbose --headless --export-debug macOS ../../builds/macos/papyrus.zip
 
     - name: Download butler
       run: |
