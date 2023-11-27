@@ -1,5 +1,17 @@
 [
 	{
+		"max_lines": 99999,
+		"ball": {
+			"position_x": 100.0,
+			"position_y": 50.0
+		},
+		"obstacles": [],
+		"goal": {
+			"position_x": 950.0,
+			"position_y": 1800.0
+		}
+	},
+	{
 		"max_lines": 2,
 		"ball": {
 			"position_x": 100.0,
