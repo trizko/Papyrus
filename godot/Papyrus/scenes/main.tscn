@@ -34,4 +34,5 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 100
 text = "Level Edit Mode"
 
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/LevelEditorButton" to="." method="_on_level_editor_button_pressed"]
