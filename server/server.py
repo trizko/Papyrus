@@ -16,7 +16,7 @@ class LevelGenerationRequest(BaseModel):
     prompt: Optional[str] = """
 I have created a game where the goal is to get a ball to a goal. A level of the
 game starts with a ball suspended in the air. At this point, the user is allowed
-to draw a specific number of lines in the scene. The lines act as platforms for
+to draw a maximum number of lines in the scene. The lines act as platforms for
 the ball to roll on and the goal is for the player to draw the correct lines to
 get the ball to the goal. There will be obstacles in the way of the goal from
 the starting position of the ball that the player will have to draw lines
