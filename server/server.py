@@ -24,7 +24,6 @@ around. The user then presses the "Play" button to turn on the gravity for the
 ball and the ball will fall on the lines and obstacles and, hopefully, get to
 the goal line. Here is an example level in JSON format:
 
-```json
 {
   "max_lines": 2,
   "ball": {
@@ -45,9 +44,10 @@ the goal line. Here is an example level in JSON format:
     "position_y": 1800.0
   }
 }
-```
 
-Responding with only JSON, generate a new level.
+The max level size 1080 pixels along the x axis and 1920 along the y axis.
+Generate a new level by responding with only JSON. Remove any formatting like
+newlines and tabs.
     """
 
 @app.post("/generate-level/")
