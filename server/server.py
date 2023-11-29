@@ -1,19 +1,28 @@
+import os
+
+from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
-import openai
+from openai import OpenAI
+from pydantic import BaseModel
+
+load_dotenv()
+
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 app = FastAPI()
 
-openai.api_key = 'super-secret-key'
+class LevelGenerationRequest(BaseModel):
+    prompt: str = "Write a simple web server in roc-lang."
 
-@app.post("/generate-text/")
-async def generate_text(prompt: str):
+@app.post("/generate-level/")
+async def generate_text(data: LevelGenerationRequest):
     try:
-        response = openai.Completion.create(
-          engine="text-davinci-003",
-          prompt=prompt,
-          max_tokens=50
+        response = client.completions.create(
+          model="text-davinci-003",
+          prompt=data.prompt,
+          max_tokens=2000
         )
-        return {"generated_text": response.choices[0].text.strip()}
+        return {"level": response.choices[0].text.strip()}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
