@@ -1,4 +1,6 @@
+import json
 import os
+
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
@@ -53,12 +55,20 @@ newlines and tabs.
 @app.post("/generate-level/")
 async def generate_text(data: LevelGenerationRequest):
     try:
-        response = client.completions.create(
-          model="text-davinci-003",
-          prompt=data.prompt,
-          max_tokens=2000
+        response = client.chat.completions.create(
+          model="gpt-3.5-turbo-1106",
+          # model="gpt-4-1106-preview",
+          messages=[
+              {
+                  "role": "user",
+                  "content": data.prompt,
+              }
+          ],
+          response_format={
+            "type": "json_object"
+          }
         )
-        return {"level": response.choices[0].text.strip()}
+        return json.loads(response.choices[0].message.content)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
