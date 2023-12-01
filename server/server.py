@@ -47,17 +47,17 @@ the goal line. Here is an example level in JSON format:
   }
 }
 
-The max level size 1080 pixels along the x axis and 1920 along the y axis.
-Generate a new level by responding with only JSON. Remove any formatting like
-newlines and tabs.
+The maximum level size could be 1080x1920 pixels. Generate a new level within
+that range for the x and y axis and respond with only JSON. Remove any
+formatting like newlines and tabs.
     """
+
 
 @app.post("/generate-level/")
 async def generate_text(data: LevelGenerationRequest):
     try:
         response = client.chat.completions.create(
           model="gpt-3.5-turbo-1106",
-          # model="gpt-4-1106-preview",
           messages=[
               {
                   "role": "user",
