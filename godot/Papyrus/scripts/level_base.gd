@@ -74,6 +74,7 @@ func _on_body_entered(body):
 	if body.name == "Goal":
 		Ball.gravity_scale = 0.0
 		Ball.linear_velocity = Vector2.ZERO
+		reset_level(level_number + 1)
 
 func reset_ball(pos):
 	Ball = ball_scene.instantiate()
@@ -82,3 +83,8 @@ func reset_ball(pos):
 	Ball.gravity_scale = 0.0
 	Ball.body_entered.connect(_on_body_entered)
 
+func reset_level(level_num):
+	var level_scene = preload("res://scenes/level_base.tscn")
+	var level_scene_instance = level_scene.instantiate()
+	level_scene_instance.level_number = level_num
+	get_tree().root.add_child(level_scene_instance)
