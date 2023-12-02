@@ -5,42 +5,16 @@ var ball_scene = preload("res://scenes/object.tscn")
 var obstacle_scene = preload("res://scenes/obstacle.tscn")
 var goal_scene = preload("res://scenes/goal.tscn")
 var line_count = 0
-var level_number = null
-var max_lines = null
+var max_lines = 0
 var ball_start_position = null
 var current_line_instance = null
 var Ball = null
 
 func _ready():
-	# parse level data
-	var json_as_text = FileAccess.get_file_as_string("res://levels.json")
-	var levels = JSON.parse_string(json_as_text)
-	var level_data = levels[level_number]
-
-	# get and set line count
-	max_lines = level_data["max_lines"]
-
-	# get ball starting position and instantiate ball
-	ball_start_position = Vector2(
-		level_data["ball"]["position_x"],
-		level_data["ball"]["position_y"],
-	)
-	reset_ball(ball_start_position)
-
-	# get and instantiate all obstacles
-	for o in level_data["obstacles"]:
-		var obstacle = obstacle_scene.instantiate()
-		obstacle.start_point = Vector2(o["start_point_x"], o["start_point_y"])
-		obstacle.end_point = Vector2(o["end_point_x"], o["end_point_y"])
-		add_child(obstacle)
-
-	# initialize goal
-	var goal = goal_scene.instantiate()
-	goal.position = Vector2(
-		level_data["goal"]["position_x"],
-		level_data["goal"]["position_y"],
-	)
-	add_child(goal)
+	var body = "{}"
+	var headers = ["Content-Type: application/json"]
+	$HTTPRequest.request_completed.connect(_on_request_completed)
+	$HTTPRequest.request("http://localhost:8000/generate-level/", headers, HTTPClient.METHOD_POST, body)
 
 func _unhandled_input(event):
 	if line_count >= max_lines:
@@ -74,7 +48,7 @@ func _on_body_entered(body):
 	if body.name == "Goal":
 		Ball.gravity_scale = 0.0
 		Ball.linear_velocity = Vector2.ZERO
-		reset_level(level_number + 1)
+		reset_level()
 
 func reset_ball(pos):
 	Ball = ball_scene.instantiate()
@@ -83,8 +57,41 @@ func reset_ball(pos):
 	Ball.gravity_scale = 0.0
 	Ball.body_entered.connect(_on_body_entered)
 
-func reset_level(level_num):
+func reset_level():
 	var level_scene = preload("res://scenes/level_base.tscn")
 	var level_scene_instance = level_scene.instantiate()
-	level_scene_instance.level_number = level_num
 	get_tree().root.add_child(level_scene_instance)
+
+func _on_request_completed(_result, _response_code, _headers, body):
+	var level_json = JSON.parse_string(body.get_string_from_utf8())
+	print(level_json)
+	_initialize_level(level_json)
+
+func _initialize_level(level_json):
+	# parse level data
+	var level_data = level_json
+
+	# get and set line count
+	max_lines = level_data["max_lines"]
+
+	# get ball starting position and instantiate ball
+	ball_start_position = Vector2(
+		level_data["ball"]["position_x"],
+		level_data["ball"]["position_y"],
+	)
+	reset_ball(ball_start_position)
+
+	# get and instantiate all obstacles
+	for o in level_data["obstacles"]:
+		var obstacle = obstacle_scene.instantiate()
+		obstacle.start_point = Vector2(o["start_point_x"], o["start_point_y"])
+		obstacle.end_point = Vector2(o["end_point_x"], o["end_point_y"])
+		add_child(obstacle)
+
+	# initialize goal
+	var goal = goal_scene.instantiate()
+	goal.position = Vector2(
+		level_data["goal"]["position_x"],
+		level_data["goal"]["position_y"],
+	)
+	add_child(goal)
