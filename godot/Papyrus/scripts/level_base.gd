@@ -59,8 +59,7 @@ func reset_ball(pos):
 
 func reset_level():
 	var level_scene = preload("res://scenes/level_base.tscn")
-	var level_scene_instance = level_scene.instantiate()
-	get_tree().root.add_child(level_scene_instance)
+	get_tree().change_scene_to_packed(level_scene)
 
 func _on_request_completed(_result, _response_code, _headers, body):
 	var level_json = JSON.parse_string(body.get_string_from_utf8())
