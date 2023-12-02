@@ -1,4 +1,5 @@
 extends PanelContainer
 
 func _on_start_button_pressed():
-	get_tree().root.add_child(level_scene_instance)
+	var level_scene = preload("res://scenes/level_base.tscn")
+	get_tree().change_scene_to_packed(level_scene)
