@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://b35ak1r6icmdw"]
 
-[ext_resource type="Script" path="res://scripts/level_base.gd" id="1_8t2oc"]
-[ext_resource type="PackedScene" uid="uid://dkpq67idphey1" path="res://scenes/play_reload_button.tscn" id="2_mhjdd"]
+[ext_resource type="Script" path="res://scripts/level_base.gd" id="1_cax5g"]
+[ext_resource type="PackedScene" uid="uid://dkpq67idphey1" path="res://scenes/play_reload_button.tscn" id="2_qg1i0"]
 
 [node name="Level" type="Node"]
-script = ExtResource("1_8t2oc")
+script = ExtResource("1_cax5g")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -23,7 +23,7 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 20
 
-[node name="PlayReloadButton" parent="Background/MarginContainer" instance=ExtResource("2_mhjdd")]
+[node name="PlayReloadButton" parent="Background/MarginContainer" instance=ExtResource("2_qg1i0")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
