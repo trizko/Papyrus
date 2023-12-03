@@ -1,6 +1,7 @@
 import json
 import os
 
+import uvicorn
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
@@ -72,3 +73,5 @@ async def generate_text(data: LevelGenerationRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
