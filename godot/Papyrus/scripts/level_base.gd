@@ -11,10 +11,8 @@ var current_line_instance = null
 var Ball = null
 
 func _ready():
-	var body = "{}"
-	var headers = ["Content-Type: application/json"]
 	$HTTPRequest.request_completed.connect(_on_request_completed)
-	$HTTPRequest.request("http://localhost:8000/generate-level/", headers, HTTPClient.METHOD_POST, body)
+	$HTTPRequest.request("http://localhost:8000/levels/")
 
 func _unhandled_input(event):
 	if line_count >= max_lines:
