@@ -3,6 +3,7 @@ import os
 
 import uvicorn
 
+from apscheduler.schedulers.background import BackgroundScheduler
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from openai import OpenAI
@@ -12,11 +13,12 @@ from typing import Optional
 load_dotenv()
 
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+scheduler = BackgroundScheduler()
+in_memory_db = { "levels": [] }
 
 app = FastAPI()
 
-class LevelGenerationRequest(BaseModel):
-    prompt: Optional[str] = """
+PROMPT = """
 I have created a game where the goal is to get a ball to a goal. A level of the
 game starts with a ball suspended in the air. At this point, the user is allowed
 to draw a maximum number of lines in the scene. The lines act as platforms for
@@ -51,27 +53,37 @@ the goal line. Here is an example level in JSON format:
 The maximum level size could be 1080x1920 pixels. Generate a new level within
 that range for the x and y axis and respond with only JSON. Remove any
 formatting like newlines and tabs.
-    """
+"""
 
-
-@app.post("/generate-level/")
-async def generate_text(data: LevelGenerationRequest):
-    try:
-        response = client.chat.completions.create(
-          model="gpt-3.5-turbo-1106",
-          messages=[
-              {
-                  "role": "user",
-                  "content": data.prompt,
-              }
-          ],
-          response_format={
+def generate_level():
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo-1106",
+        messages=[
+            {
+                "role": "user",
+                "content": PROMPT,
+            }
+        ],
+        response_format={
             "type": "json_object"
-          }
-        )
-        return json.loads(response.choices[0].message.content)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        }
+    )
+    return json.loads(response.choices[0].message.content)
+
+def update_db():
+    in_memory_db["levels"].append(generate_level())
+
+@app.on_event("startup")
+def start_scheduler():
+    scheduler.add_job(update_db, 'interval', seconds=10)
+    scheduler.start()
+
+@app.get("/levels/")
+async def generate_text():
+    try:
+        return in_memory_db["levels"].pop()
+    except:
+        raise HTTPException(status_code=404, detail=f"Level number {level_number} not found")
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
