@@ -13,3 +13,9 @@ class RedisCache(BaseCache):
 
     def delete(self, key):
         self.client.delete(key)
+    
+    def rpush(self, key, *values):
+        return self.client.rpush(key, *values)
+
+    def rpop(self, key):
+        return self.client.rpop(key)

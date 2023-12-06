@@ -12,3 +12,13 @@ class MemoryCache(BaseCache):
 
     def delete(self, key):
         self.cache.pop(key, None)
+
+    def rpush(self, key, *values):
+        if key not in self.cache:
+            self.cache[key] = []
+        self.cache[key].extend(values)
+
+    def rpop(self, key):
+        if key in self.cache and self.cache[key]:
+            return self.cache[key].pop()
+        return None

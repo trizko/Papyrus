@@ -7,3 +7,9 @@ class BaseCache:
 
     def delete(self, key):
         raise NotImplementedError
+
+    def rpush(self, key, *values):
+        raise NotImplementedError
+
+    def rpop(self, key):
+        raise NotImplementedError
