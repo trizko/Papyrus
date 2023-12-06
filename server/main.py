@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 
 import uvicorn
@@ -14,6 +15,7 @@ from cache.redis import RedisCache
 from cache.memory import MemoryCache
 
 load_dotenv()
+logger = logging.getLogger("uvicorn")
 
 # initialize cache
 redis_cluster_nodes = [{"host": "127.0.0.1", "port": "6379"}]
@@ -75,10 +77,12 @@ def generate_level():
             "type": "json_object"
         }
     )
+    logger.info("Generating new level from GPT API.")
     return json.loads(response.choices[0].message.content)
 
 def update_db():
     cache.push("levels", generate_level())
+    logger.info("Added new level to cache.")
 
 @app.on_event("startup")
 def start_scheduler():
