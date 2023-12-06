@@ -11,8 +11,7 @@ from openai import OpenAI
 from pydantic import BaseModel
 from typing import Optional
 
-from cache.redis import RedisCache
-from cache.memory import MemoryCache
+from cache import MemoryCache, RedisCache
 
 load_dotenv()
 logger = logging.getLogger("uvicorn")
