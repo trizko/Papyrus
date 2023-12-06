@@ -89,6 +89,10 @@ def start_scheduler():
     scheduler.add_job(update_db, 'interval', seconds=5)
     scheduler.start()
 
+@app.on_event("shutdown")
+def stop_scheduler():
+    scheduler.shutdown()
+
 @app.get("/levels/")
 async def generate_text():
     try:
