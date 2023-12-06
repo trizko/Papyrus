@@ -10,11 +10,18 @@ from openai import OpenAI
 from pydantic import BaseModel
 from typing import Optional
 
+from cache.redis import RedisCache
+from cache.memory import MemoryCache
+
 load_dotenv()
 
+# initialize cache
+redis_cluster_nodes = [{"host": "127.0.0.1", "port": "6379"}]
+cache = MemoryCache() if os.getenv('ENVIRONMENT') != "prod" else RedisCache(redis_cluster_nodes)
+
+# initialize app and background worker
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 scheduler = BackgroundScheduler()
-in_memory_db = { "levels": [] }
 
 app = FastAPI()
 
@@ -71,17 +78,17 @@ def generate_level():
     return json.loads(response.choices[0].message.content)
 
 def update_db():
-    in_memory_db["levels"].append(generate_level())
+    cache.push("levels", generate_level())
 
 @app.on_event("startup")
 def start_scheduler():
-    scheduler.add_job(update_db, 'interval', seconds=10)
+    scheduler.add_job(update_db, 'interval', seconds=5)
     scheduler.start()
 
 @app.get("/levels/")
 async def generate_text():
     try:
-        return in_memory_db["levels"].pop()
+        return cache.pop("levels")
     except:
         raise HTTPException(status_code=404, detail=f"Level number {level_number} not found")
 
