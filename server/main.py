@@ -86,7 +86,7 @@ def update_db():
 
 @app.on_event("startup")
 def start_scheduler():
-    scheduler.add_job(update_db, 'interval', seconds=5)
+    scheduler.add_job(update_db, 'interval', seconds=10)
     scheduler.start()
 
 @app.on_event("shutdown")
