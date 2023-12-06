@@ -3,3 +3,4 @@ uvicorn
 openai
 python-dotenv
 apscheduler
+redis-py-cluster
