@@ -64,6 +64,9 @@ formatting like newlines and tabs.
 """
 
 def generate_level():
+    if cache.length("levels") > 99:
+        return
+
     response = client.chat.completions.create(
         model="gpt-3.5-turbo-1106",
         messages=[
@@ -77,15 +80,12 @@ def generate_level():
         }
     )
     logger.info("Generating new level from GPT API.")
-    return json.loads(response.choices[0].message.content)
-
-def update_db():
     cache.push("levels", generate_level())
     logger.info("Added new level to cache.")
 
 @app.on_event("startup")
 def start_scheduler():
-    scheduler.add_job(update_db, 'interval', seconds=10)
+    scheduler.add_job(generate_level, 'interval', seconds=10)
     scheduler.start()
 
 @app.on_event("shutdown")
