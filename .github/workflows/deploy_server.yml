@@ -1,0 +1,68 @@
+name: CD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server
+    steps:
+      - name: Checkout the repo 
+        uses: actions/checkout@v2
+
+      - name: Create and populate .env file
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          cat <<EOF > .env
+          OPENAI_API_KEY="$OPENAI_API_KEY"
+          ENVIRONMENT="dev"
+          EOF
+
+      - name: Build image 
+        run: docker build -t ai-stuff-registry/papyrus-server .
+
+      - name: Install doctl 
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Log in to DO Container Registry 
+        run: doctl registry login --expiry-seconds 600
+
+      - name: Tag image 
+        run: docker tag ai-stuff-registry/papyrus-server registry.digitalocean.com/ai-stuff-registry/papyrus-server:latest
+
+      - name: Push image to DO Container Registry 
+        run: docker push registry.digitalocean.com/ai-stuff-registry/papyrus-server:latest
+
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_papyrus-server-droplet.key
+          chmod 600 ~/.ssh/id_papyrus-server-droplet.key
+
+          export SSH_USER="papyrus-server"
+          export SSH_HOST="$(doctl compute droplet get papyrus-server-droplet --template {{.PublicIPv4}})"
+
+          cat <<EOF > ~/.ssh/config
+          Host papyrus-server-droplet
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/id_papyrus-server-droplet.key
+            StrictHostKeyChecking no
+          EOF
+
+      - name: Stop papyrus-server service
+        run: ssh papyrus-server-droplet 'sudo systemctl stop papyrus-server'
+
+      - name: Start papyrus-server service
+        run: ssh papyrus-server-droplet 'sudo systemctl start papyrus-server'
+
+      - name: Clean up DO Container Registry
+        run: doctl registry garbage-collection start --include-untagged-manifests --force
