@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-USERDATA_TEMPLATE="$(<./infra/userdata.sh.template)"
+USERDATA_TEMPLATE="$(<./userdata.sh.template)"
 USERDATA="${USERDATA_TEMPLATE//\{\{DO_API_KEY\}\}/$DO_API_KEY}"
 
 doctl compute droplet create \

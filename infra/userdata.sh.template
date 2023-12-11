@@ -18,7 +18,7 @@ COPY_AUTHORIZED_KEYS_FROM_ROOT=true
 #     "ssh-rsa AAAAB..."
 # )
 OTHER_PUBLIC_KEYS_TO_ADD=(
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICUrH/CP2DwHChvvFrvett36Dc1/qtka7ydFVJ8MaU05 papyrus-server-github-actions"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB/kuz5ja48sXzFS1DdGKF9cZXSKJ9uCcnlQ3JKRfz9G papyrus-server-github-actions"
 )
 
 ####################
