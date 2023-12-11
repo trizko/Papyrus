@@ -13,3 +13,6 @@ class BaseCache:
 
     def pop(self, key):
         raise NotImplementedError
+
+    def length(self, key):
+        raise NotImplementedError

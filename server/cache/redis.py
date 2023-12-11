@@ -19,3 +19,6 @@ class RedisCache(BaseCache):
 
     def pop(self, key):
         return self.client.rpop(key)
+
+    def length(self, key):
+        return self.client.llen(key)

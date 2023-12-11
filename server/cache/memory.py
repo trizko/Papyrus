@@ -22,3 +22,6 @@ class MemoryCache(BaseCache):
         if key in self.cache and self.cache[key]:
             return self.cache[key].pop()
         return None
+
+    def length(self, key):
+        return len(self.cache[key])
