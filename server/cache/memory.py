@@ -24,4 +24,6 @@ class MemoryCache(BaseCache):
         return None
 
     def length(self, key):
+        if key not in self.cache:
+            self.cache[key] = []
         return len(self.cache[key])
