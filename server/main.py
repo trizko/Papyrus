@@ -80,7 +80,7 @@ def generate_level():
         }
     )
     logger.info("Generating new level from GPT API.")
-    cache.push("levels", generate_level())
+    cache.push("levels", json.loads(response.choices[0].message.content))
     logger.info("Added new level to cache.")
 
 @app.on_event("startup")
