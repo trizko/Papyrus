@@ -14,7 +14,8 @@ services:
       - "6379:6379"
 
   postgres:
-    image: postgres:latest
+    build:
+      context: ./db/
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
