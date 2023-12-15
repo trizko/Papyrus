@@ -5,6 +5,7 @@ import os
 import uvicorn
 
 from apscheduler.schedulers.background import BackgroundScheduler
+from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from openai import OpenAI
@@ -23,8 +24,6 @@ cache = MemoryCache() if os.getenv('ENVIRONMENT') != "prod" else RedisCache(redi
 # initialize app and background worker
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 scheduler = BackgroundScheduler()
-
-app = FastAPI()
 
 PROMPT = """
 I have created a game where the goal is to get a ball to a goal. A level of the
@@ -83,14 +82,14 @@ def generate_level():
     cache.push("levels", json.loads(response.choices[0].message.content))
     logger.info("Added new level to cache.")
 
-@app.on_event("startup")
-def start_scheduler():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     scheduler.add_job(generate_level, 'interval', seconds=10)
     scheduler.start()
-
-@app.on_event("shutdown")
-def stop_scheduler():
+    yield
     scheduler.shutdown()
+
+app = FastAPI(lifespan=lifespan)
 
 @app.get("/levels/")
 async def generate_text():
