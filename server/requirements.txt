@@ -4,3 +4,4 @@ openai
 python-dotenv
 apscheduler
 redis-py-cluster
+asyncpg
