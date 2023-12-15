@@ -12,7 +12,7 @@ class RatingCreate(BaseModel):
     json_level: Json
 
 class Rating(RatingCreate):
-    id: int
+    rating_id: int
     created_at: datetime = datetime.now()
     modified_at: datetime = datetime.now()
 

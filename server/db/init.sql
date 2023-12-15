@@ -1,5 +1,5 @@
 CREATE TABLE ratings (
-    id SERIAL PRIMARY KEY,
+    rating_id SERIAL PRIMARY KEY,
     challenge_rating INT CHECK (challenge_rating BETWEEN 0 AND 5),
     fun_rating INT CHECK (fun_rating BETWEEN 0 AND 5),
     json_level JSON,
