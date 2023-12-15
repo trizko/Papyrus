@@ -84,9 +84,11 @@ def generate_level():
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # startup events that happen before the yielding
     scheduler.add_job(generate_level, 'interval', seconds=10)
     scheduler.start()
     yield
+    # run shutdown events when lifespan yields
     scheduler.shutdown()
 
 app = FastAPI(lifespan=lifespan)
