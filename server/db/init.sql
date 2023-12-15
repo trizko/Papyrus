@@ -1,7 +1,7 @@
 CREATE TABLE ratings (
-    user_id SERIAL PRIMARY KEY,
-    challenge_rating INT CHECK (challenge_rating BETWEEN 1 AND 5),
-    fun_rating INT CHECK (fun_rating BETWEEN 1 AND 5),
+    id SERIAL PRIMARY KEY,
+    challenge_rating INT CHECK (challenge_rating BETWEEN 0 AND 5),
+    fun_rating INT CHECK (fun_rating BETWEEN 0 AND 5),
     json_level JSON,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     modified_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
