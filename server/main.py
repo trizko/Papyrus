@@ -13,6 +13,7 @@ from pydantic import BaseModel
 from typing import Optional
 
 from cache import MemoryCache, RedisCache
+from models.ratings import RatingCreate, Rating, create_rating
 
 load_dotenv()
 logger = logging.getLogger("uvicorn")
@@ -99,6 +100,13 @@ async def generate_text():
         return cache.pop("levels")
     except:
         raise HTTPException(status_code=404, detail=f"Level number {level_number} not found")
+
+@app.post("/ratings/", response_model=Rating)
+async def create_rating_endpoint(rating: RatingCreate):
+    new_rating = await create_rating(rating)
+    if new_rating is None:
+        raise HTTPException(status_code=400, detail="Error creating rating")
+    return new_rating
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
