@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://dptssbc1cpyv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ftjlv"]
+font_size = 120
+
+[sub_resource type="LabelSettings" id="LabelSettings_xtsd4"]
+font_size = 120
+
+[node name="rating" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 200
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "Was this puzzle..."
+label_settings = SubResource("LabelSettings_ftjlv")
+horizontal_alignment = 1
+
+[node name="FunLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Fun?"
+label_settings = SubResource("LabelSettings_xtsd4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FunRatingContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="OneStars" type="Button" parent="FunRatingContainer"]
+layout_mode = 2
+
+[node name="TwoStars" type="Button" parent="FunRatingContainer"]
+layout_mode = 2
+
+[node name="ThreeStars" type="Button" parent="FunRatingContainer"]
+layout_mode = 2
+
+[node name="FourStars" type="Button" parent="FunRatingContainer"]
+layout_mode = 2
+
+[node name="FiveStars" type="Button" parent="FunRatingContainer"]
+layout_mode = 2
+
+[node name="ChalLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Challenging?"
+label_settings = SubResource("LabelSettings_xtsd4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChalRatingContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="OneStars" type="Button" parent="ChalRatingContainer"]
+layout_mode = 2
+
+[node name="TwoStars" type="Button" parent="ChalRatingContainer"]
+layout_mode = 2
+
+[node name="ThreeStars" type="Button" parent="ChalRatingContainer"]
+layout_mode = 2
+
+[node name="FourStars" type="Button" parent="ChalRatingContainer"]
+layout_mode = 2
+
+[node name="FiveStars" type="Button" parent="ChalRatingContainer"]
+layout_mode = 2
+
+[node name="SubmitButton" type="Button" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 120
+text = "Submit"
