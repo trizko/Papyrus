@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dptssbc1cpyv"]
+[gd_scene load_steps=5 format=3 uid="uid://dptssbc1cpyv"]
+
+[ext_resource type="Shader" path="res://shaders/star.gdshader" id="1_pxen0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ftjlv"]
 font_size = 120
 
 [sub_resource type="LabelSettings" id="LabelSettings_xtsd4"]
 font_size = 120
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r80ae"]
+shader = ExtResource("1_pxen0")
+shader_parameter/useYellow = false
 
 [node name="rating" type="VBoxContainer"]
 anchors_preset = 15
@@ -33,24 +39,30 @@ vertical_alignment = 1
 
 [node name="FunRatingContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Stars1" type="Button" parent="FunRatingContainer"]
+material = SubResource("ShaderMaterial_r80ae")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars2" type="Button" parent="FunRatingContainer"]
+material = SubResource("ShaderMaterial_r80ae")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars3" type="Button" parent="FunRatingContainer"]
+material = SubResource("ShaderMaterial_r80ae")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars4" type="Button" parent="FunRatingContainer"]
+material = SubResource("ShaderMaterial_r80ae")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars5" type="Button" parent="FunRatingContainer"]
+material = SubResource("ShaderMaterial_r80ae")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
@@ -63,24 +75,30 @@ vertical_alignment = 1
 
 [node name="ChalRatingContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Stars1" type="Button" parent="ChalRatingContainer"]
+material = SubResource("ShaderMaterial_r80ae")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars2" type="Button" parent="ChalRatingContainer"]
+material = SubResource("ShaderMaterial_r80ae")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars3" type="Button" parent="ChalRatingContainer"]
+material = SubResource("ShaderMaterial_r80ae")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars4" type="Button" parent="ChalRatingContainer"]
+material = SubResource("ShaderMaterial_r80ae")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars5" type="Button" parent="ChalRatingContainer"]
+material = SubResource("ShaderMaterial_r80ae")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
