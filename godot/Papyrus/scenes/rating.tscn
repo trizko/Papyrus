@@ -34,19 +34,24 @@ vertical_alignment = 1
 [node name="FunRatingContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="OneStars" type="Button" parent="FunRatingContainer"]
+[node name="Stars1" type="Button" parent="FunRatingContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="TwoStars" type="Button" parent="FunRatingContainer"]
+[node name="Stars2" type="Button" parent="FunRatingContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="ThreeStars" type="Button" parent="FunRatingContainer"]
+[node name="Stars3" type="Button" parent="FunRatingContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="FourStars" type="Button" parent="FunRatingContainer"]
+[node name="Stars4" type="Button" parent="FunRatingContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="FiveStars" type="Button" parent="FunRatingContainer"]
+[node name="Stars5" type="Button" parent="FunRatingContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="ChalLabel" type="Label" parent="."]
@@ -59,19 +64,24 @@ vertical_alignment = 1
 [node name="ChalRatingContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="OneStars" type="Button" parent="ChalRatingContainer"]
+[node name="Stars1" type="Button" parent="ChalRatingContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="TwoStars" type="Button" parent="ChalRatingContainer"]
+[node name="Stars2" type="Button" parent="ChalRatingContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="ThreeStars" type="Button" parent="ChalRatingContainer"]
+[node name="Stars3" type="Button" parent="ChalRatingContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="FourStars" type="Button" parent="ChalRatingContainer"]
+[node name="Stars4" type="Button" parent="ChalRatingContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="FiveStars" type="Button" parent="ChalRatingContainer"]
+[node name="Stars5" type="Button" parent="ChalRatingContainer"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="SubmitButton" type="Button" parent="."]
