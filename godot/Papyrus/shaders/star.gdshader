@@ -33,11 +33,27 @@ void fragment() {
     
     // sdf
     float d = sdStar(uv, 0.8, n, w);
-    
-    // colorize
-    vec3 col = (d > 0.0) ? vec3(0.0) : vec3(1.0);
-	col = (useYellow) ? vec3(1.0, 1.0, 0.0) : vec3(1.0);
-	float alpha = (d > 0.0) ? 0.0 : 1.0;
+
+    // outline width
+    float outlineWidth = 0.03; // Adjust this value to change the thickness of the outline
+
+    // Determine color and alpha based on distance field
+    vec3 col;
+    float alpha;
+
+    if (d < 0.0) {
+        // Inside the star
+        col = useYellow ? vec3(1.0, 1.0, 0.0) : vec3(1.0);
+        alpha = 1.0;
+    } else if (d < outlineWidth) {
+        // Outline
+        col = vec3(0.0, 0.0, 0.0);
+        alpha = 1.0;
+    } else {
+        // Outside the star and outline
+        col = vec3(0.0, 0.0, 0.0);
+        alpha = 0.0;
+    }
     
     COLOR = vec4(col, alpha);
 }
