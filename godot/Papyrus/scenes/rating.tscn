@@ -145,3 +145,14 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 120
 text = "Submit"
+
+[connection signal="pressed" from="FunRatingContainer/Stars1" to="." method="_on_fun_stars_pressed" binds= [1]]
+[connection signal="pressed" from="FunRatingContainer/Stars2" to="." method="_on_fun_stars_pressed" binds= [2]]
+[connection signal="pressed" from="FunRatingContainer/Stars3" to="." method="_on_fun_stars_pressed" binds= [3]]
+[connection signal="pressed" from="FunRatingContainer/Stars4" to="." method="_on_fun_stars_pressed" binds= [4]]
+[connection signal="pressed" from="FunRatingContainer/Stars5" to="." method="_on_fun_stars_pressed" binds= [5]]
+[connection signal="pressed" from="ChalRatingContainer/Stars1" to="." method="_on_chal_stars_pressed" binds= [1]]
+[connection signal="pressed" from="ChalRatingContainer/Stars2" to="." method="_on_chal_stars_pressed" binds= [2]]
+[connection signal="pressed" from="ChalRatingContainer/Stars3" to="." method="_on_chal_stars_pressed" binds= [3]]
+[connection signal="pressed" from="ChalRatingContainer/Stars4" to="." method="_on_chal_stars_pressed" binds= [4]]
+[connection signal="pressed" from="ChalRatingContainer/Stars5" to="." method="_on_chal_stars_pressed" binds= [5]]
