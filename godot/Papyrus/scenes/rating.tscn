@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dptssbc1cpyv"]
+[gd_scene load_steps=15 format=3 uid="uid://dptssbc1cpyv"]
 
 [ext_resource type="Shader" path="res://shaders/star.gdshader" id="1_pxen0"]
 
@@ -8,7 +8,43 @@ font_size = 120
 [sub_resource type="LabelSettings" id="LabelSettings_xtsd4"]
 font_size = 120
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r80ae"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4jrfj"]
+shader = ExtResource("1_pxen0")
+shader_parameter/useYellow = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lbf2y"]
+shader = ExtResource("1_pxen0")
+shader_parameter/useYellow = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cx8fq"]
+shader = ExtResource("1_pxen0")
+shader_parameter/useYellow = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wsn17"]
+shader = ExtResource("1_pxen0")
+shader_parameter/useYellow = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jabch"]
+shader = ExtResource("1_pxen0")
+shader_parameter/useYellow = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7a00h"]
+shader = ExtResource("1_pxen0")
+shader_parameter/useYellow = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6mw5r"]
+shader = ExtResource("1_pxen0")
+shader_parameter/useYellow = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qtmje"]
+shader = ExtResource("1_pxen0")
+shader_parameter/useYellow = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_02p10"]
+shader = ExtResource("1_pxen0")
+shader_parameter/useYellow = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eryl8"]
 shader = ExtResource("1_pxen0")
 shader_parameter/useYellow = false
 
@@ -18,6 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_u33ae")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -42,27 +79,27 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Stars1" type="Button" parent="FunRatingContainer"]
-material = SubResource("ShaderMaterial_r80ae")
+material = SubResource("ShaderMaterial_4jrfj")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars2" type="Button" parent="FunRatingContainer"]
-material = SubResource("ShaderMaterial_r80ae")
+material = SubResource("ShaderMaterial_lbf2y")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars3" type="Button" parent="FunRatingContainer"]
-material = SubResource("ShaderMaterial_r80ae")
+material = SubResource("ShaderMaterial_cx8fq")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars4" type="Button" parent="FunRatingContainer"]
-material = SubResource("ShaderMaterial_r80ae")
+material = SubResource("ShaderMaterial_wsn17")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars5" type="Button" parent="FunRatingContainer"]
-material = SubResource("ShaderMaterial_r80ae")
+material = SubResource("ShaderMaterial_jabch")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
@@ -78,27 +115,27 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Stars1" type="Button" parent="ChalRatingContainer"]
-material = SubResource("ShaderMaterial_r80ae")
+material = SubResource("ShaderMaterial_7a00h")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars2" type="Button" parent="ChalRatingContainer"]
-material = SubResource("ShaderMaterial_r80ae")
+material = SubResource("ShaderMaterial_6mw5r")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars3" type="Button" parent="ChalRatingContainer"]
-material = SubResource("ShaderMaterial_r80ae")
+material = SubResource("ShaderMaterial_qtmje")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars4" type="Button" parent="ChalRatingContainer"]
-material = SubResource("ShaderMaterial_r80ae")
+material = SubResource("ShaderMaterial_02p10")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="Stars5" type="Button" parent="ChalRatingContainer"]
-material = SubResource("ShaderMaterial_r80ae")
+material = SubResource("ShaderMaterial_eryl8")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
