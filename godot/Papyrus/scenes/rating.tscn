@@ -1,6 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dptssbc1cpyv"]
 
 [ext_resource type="Shader" path="res://shaders/star.gdshader" id="1_pxen0"]
+[ext_resource type="Script" path="res://scripts/rating.gd" id="1_u33ae"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ftjlv"]
 font_size = 120
