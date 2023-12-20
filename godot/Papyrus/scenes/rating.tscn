@@ -156,3 +156,4 @@ text = "Submit"
 [connection signal="pressed" from="ChalRatingContainer/Stars3" to="." method="_on_chal_stars_pressed" binds= [3]]
 [connection signal="pressed" from="ChalRatingContainer/Stars4" to="." method="_on_chal_stars_pressed" binds= [4]]
 [connection signal="pressed" from="ChalRatingContainer/Stars5" to="." method="_on_chal_stars_pressed" binds= [5]]
+[connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]
