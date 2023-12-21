@@ -23,6 +23,11 @@ func _ready():
 	
 	$HTTPRequest.request_completed.connect(_on_request_completed)
 
+func reset_all():
+	reset_stars(fun_stars)
+	reset_stars(chal_stars)
+	num_fun_stars = 0
+	num_chal_stars = 0
 
 func reset_stars(stars):
 	for star in stars:
@@ -59,4 +64,5 @@ func _on_chal_stars_pressed(num):
 
 func _on_submit_button_pressed():
 	await send_rating()
+	reset_all()
 	get_tree().change_scene_to_packed(GlobalEnvironment.level_scene)
