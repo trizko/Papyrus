@@ -60,7 +60,7 @@ func reset_level():
 
 func _on_request_completed(_result, _response_code, _headers, body):
 	var level_json = JSON.parse_string(body.get_string_from_utf8())
-	print(level_json)
+	GlobalEnvironment.level_json = JSON.stringify(level_json)
 	_initialize_level(level_json)
 
 func _initialize_level(level_json):
