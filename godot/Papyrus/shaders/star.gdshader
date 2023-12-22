@@ -26,7 +26,7 @@ void fragment() {
     vec2 uv = vec2(UV.x * 2.0 - 1.0, 1.0 - UV.y * 2.0);
 
     // values to produce a 5-sided star
-    float t = 8.0/3.0;
+    float t = 7.6/3.0;
     float n = 3.0 + mod(floor(t),9.0);
     float a = fract(t);
     float w = 2.0 + a*a*(n-2.0);
@@ -35,7 +35,7 @@ void fragment() {
     float d = sdStar(uv, 0.8, n, w);
 
     // outline width
-    float outlineWidth = 0.03; // Adjust this value to change the thickness of the outline
+    float outlineWidth = 0.14; // Adjust this value to change the thickness of the outline
 
     // Determine color and alpha based on distance field
     vec3 col;
