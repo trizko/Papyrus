@@ -1,13 +1,24 @@
-[gd_scene load_steps=15 format=3 uid="uid://dptssbc1cpyv"]
+[gd_scene load_steps=17 format=3 uid="uid://dptssbc1cpyv"]
 
 [ext_resource type="Shader" path="res://shaders/star.gdshader" id="1_pxen0"]
 [ext_resource type="Script" path="res://scripts/rating.gd" id="1_u33ae"]
+[ext_resource type="StyleBox" uid="uid://dr2e5op65n7o4" path="res://styles/submit_button.tres" id="3_w43e3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ftjlv"]
-font_size = 120
+font_size = 80
+font_color = Color(0, 0, 0, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_17kd7"]
+font_size = 35
+font_color = Color(0.32549, 0.32549, 0.32549, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xtsd4"]
-font_size = 120
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4jrfj"]
 shader = ExtResource("1_pxen0")
@@ -29,27 +40,27 @@ shader_parameter/useYellow = false
 shader = ExtResource("1_pxen0")
 shader_parameter/useYellow = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7a00h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6e1wv"]
 shader = ExtResource("1_pxen0")
 shader_parameter/useYellow = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6mw5r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m74ys"]
 shader = ExtResource("1_pxen0")
 shader_parameter/useYellow = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qtmje"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pyfev"]
 shader = ExtResource("1_pxen0")
 shader_parameter/useYellow = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_02p10"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rcukd"]
 shader = ExtResource("1_pxen0")
 shader_parameter/useYellow = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eryl8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wipvh"]
 shader = ExtResource("1_pxen0")
 shader_parameter/useYellow = false
 
-[node name="rating" type="VBoxContainer"]
+[node name="rating" type="ColorRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -57,105 +68,146 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u33ae")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 1080.0
+offset_bottom = 1397.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_bottom = 200
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/MarginContainer"]
 layout_mode = 2
-text = "Was this puzzle..."
+
+[node name="Label" type="Label" parent="MainContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level Feedback"
 label_settings = SubResource("LabelSettings_ftjlv")
 horizontal_alignment = 1
 
-[node name="FunLabel" type="Label" parent="."]
+[node name="Label2" type="Label" parent="MainContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Fun?"
+text = "Thank you for playing! We appreciate your feedback."
+label_settings = SubResource("LabelSettings_17kd7")
+horizontal_alignment = 1
+
+[node name="FunLabel" type="Label" parent="MainContainer"]
+layout_mode = 2
+text = "Was this puzzle fun?"
 label_settings = SubResource("LabelSettings_xtsd4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FunRatingContainer" type="HBoxContainer" parent="."]
+[node name="FunRatingContainer" type="HBoxContainer" parent="MainContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 
-[node name="Stars1" type="Button" parent="FunRatingContainer"]
+[node name="Stars1" type="Button" parent="MainContainer/FunRatingContainer"]
 material = SubResource("ShaderMaterial_4jrfj")
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
 
-[node name="Stars2" type="Button" parent="FunRatingContainer"]
+[node name="Stars2" type="Button" parent="MainContainer/FunRatingContainer"]
 material = SubResource("ShaderMaterial_lbf2y")
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
 
-[node name="Stars3" type="Button" parent="FunRatingContainer"]
+[node name="Stars3" type="Button" parent="MainContainer/FunRatingContainer"]
 material = SubResource("ShaderMaterial_cx8fq")
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
 
-[node name="Stars4" type="Button" parent="FunRatingContainer"]
+[node name="Stars4" type="Button" parent="MainContainer/FunRatingContainer"]
 material = SubResource("ShaderMaterial_wsn17")
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
 
-[node name="Stars5" type="Button" parent="FunRatingContainer"]
+[node name="Stars5" type="Button" parent="MainContainer/FunRatingContainer"]
 material = SubResource("ShaderMaterial_jabch")
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
 
-[node name="ChalLabel" type="Label" parent="."]
+[node name="ChalLabel" type="Label" parent="MainContainer"]
 layout_mode = 2
-text = "Challenging?"
+text = "Was this puzzle Challenging?"
 label_settings = SubResource("LabelSettings_xtsd4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ChalRatingContainer" type="HBoxContainer" parent="."]
+[node name="ChalRatingContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+
+[node name="Stars1" type="Button" parent="MainContainer/ChalRatingContainer"]
+material = SubResource("ShaderMaterial_6e1wv")
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+
+[node name="Stars2" type="Button" parent="MainContainer/ChalRatingContainer"]
+material = SubResource("ShaderMaterial_m74ys")
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+
+[node name="Stars3" type="Button" parent="MainContainer/ChalRatingContainer"]
+material = SubResource("ShaderMaterial_pyfev")
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+
+[node name="Stars4" type="Button" parent="MainContainer/ChalRatingContainer"]
+material = SubResource("ShaderMaterial_rcukd")
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+
+[node name="Stars5" type="Button" parent="MainContainer/ChalRatingContainer"]
+material = SubResource("ShaderMaterial_wipvh")
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SubmitButton" type="Button" parent="MainContainer/CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-
-[node name="Stars1" type="Button" parent="ChalRatingContainer"]
-material = SubResource("ShaderMaterial_7a00h")
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-
-[node name="Stars2" type="Button" parent="ChalRatingContainer"]
-material = SubResource("ShaderMaterial_6mw5r")
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-
-[node name="Stars3" type="Button" parent="ChalRatingContainer"]
-material = SubResource("ShaderMaterial_qtmje")
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-
-[node name="Stars4" type="Button" parent="ChalRatingContainer"]
-material = SubResource("ShaderMaterial_02p10")
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-
-[node name="Stars5" type="Button" parent="ChalRatingContainer"]
-material = SubResource("ShaderMaterial_eryl8")
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-
-[node name="SubmitButton" type="Button" parent="."]
-layout_mode = 2
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 120
-text = "Submit"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("3_w43e3")
+theme_override_styles/hover = ExtResource("3_w43e3")
+theme_override_styles/pressed = ExtResource("3_w43e3")
+text = "Submit Feedback"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[connection signal="pressed" from="FunRatingContainer/Stars1" to="." method="_on_fun_stars_pressed" binds= [1]]
-[connection signal="pressed" from="FunRatingContainer/Stars2" to="." method="_on_fun_stars_pressed" binds= [2]]
-[connection signal="pressed" from="FunRatingContainer/Stars3" to="." method="_on_fun_stars_pressed" binds= [3]]
-[connection signal="pressed" from="FunRatingContainer/Stars4" to="." method="_on_fun_stars_pressed" binds= [4]]
-[connection signal="pressed" from="FunRatingContainer/Stars5" to="." method="_on_fun_stars_pressed" binds= [5]]
-[connection signal="pressed" from="ChalRatingContainer/Stars1" to="." method="_on_chal_stars_pressed" binds= [1]]
-[connection signal="pressed" from="ChalRatingContainer/Stars2" to="." method="_on_chal_stars_pressed" binds= [2]]
-[connection signal="pressed" from="ChalRatingContainer/Stars3" to="." method="_on_chal_stars_pressed" binds= [3]]
-[connection signal="pressed" from="ChalRatingContainer/Stars4" to="." method="_on_chal_stars_pressed" binds= [4]]
-[connection signal="pressed" from="ChalRatingContainer/Stars5" to="." method="_on_chal_stars_pressed" binds= [5]]
-[connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="MainContainer/FunRatingContainer/Stars1" to="." method="_on_fun_stars_pressed" binds= [1]]
+[connection signal="pressed" from="MainContainer/FunRatingContainer/Stars2" to="." method="_on_fun_stars_pressed" binds= [2]]
+[connection signal="pressed" from="MainContainer/FunRatingContainer/Stars3" to="." method="_on_fun_stars_pressed" binds= [3]]
+[connection signal="pressed" from="MainContainer/FunRatingContainer/Stars4" to="." method="_on_fun_stars_pressed" binds= [4]]
+[connection signal="pressed" from="MainContainer/FunRatingContainer/Stars5" to="." method="_on_fun_stars_pressed" binds= [5]]
+[connection signal="pressed" from="MainContainer/ChalRatingContainer/Stars1" to="." method="_on_chal_stars_pressed" binds= [1]]
+[connection signal="pressed" from="MainContainer/ChalRatingContainer/Stars2" to="." method="_on_chal_stars_pressed" binds= [2]]
+[connection signal="pressed" from="MainContainer/ChalRatingContainer/Stars3" to="." method="_on_chal_stars_pressed" binds= [3]]
+[connection signal="pressed" from="MainContainer/ChalRatingContainer/Stars4" to="." method="_on_chal_stars_pressed" binds= [4]]
+[connection signal="pressed" from="MainContainer/ChalRatingContainer/Stars5" to="." method="_on_chal_stars_pressed" binds= [5]]
+[connection signal="pressed" from="MainContainer/CenterContainer/SubmitButton" to="." method="_on_submit_button_pressed"]

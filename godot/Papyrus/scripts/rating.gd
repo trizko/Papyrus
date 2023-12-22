@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends ColorRect
 
 var fun_stars: Array[ShaderMaterial]
 var chal_stars: Array[ShaderMaterial]
@@ -7,18 +7,18 @@ var num_chal_stars: int
 
 func _ready():
 	fun_stars = [
-		$FunRatingContainer/Stars1.material as ShaderMaterial,
-		$FunRatingContainer/Stars2.material as ShaderMaterial,
-		$FunRatingContainer/Stars3.material as ShaderMaterial,
-		$FunRatingContainer/Stars4.material as ShaderMaterial,
-		$FunRatingContainer/Stars5.material as ShaderMaterial,
+		$MainContainer/FunRatingContainer/Stars1.material as ShaderMaterial,
+		$MainContainer/FunRatingContainer/Stars2.material as ShaderMaterial,
+		$MainContainer/FunRatingContainer/Stars3.material as ShaderMaterial,
+		$MainContainer/FunRatingContainer/Stars4.material as ShaderMaterial,
+		$MainContainer/FunRatingContainer/Stars5.material as ShaderMaterial,
 	]
 	chal_stars = [
-		$ChalRatingContainer/Stars1.material as ShaderMaterial,
-		$ChalRatingContainer/Stars2.material as ShaderMaterial,
-		$ChalRatingContainer/Stars3.material as ShaderMaterial,
-		$ChalRatingContainer/Stars4.material as ShaderMaterial,
-		$ChalRatingContainer/Stars5.material as ShaderMaterial,
+		$MainContainer/ChalRatingContainer/Stars1.material as ShaderMaterial,
+		$MainContainer/ChalRatingContainer/Stars2.material as ShaderMaterial,
+		$MainContainer/ChalRatingContainer/Stars3.material as ShaderMaterial,
+		$MainContainer/ChalRatingContainer/Stars4.material as ShaderMaterial,
+		$MainContainer/ChalRatingContainer/Stars5.material as ShaderMaterial,
 	]
 	
 	$HTTPRequest.request_completed.connect(_on_request_completed)
