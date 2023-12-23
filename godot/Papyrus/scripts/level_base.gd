@@ -14,6 +14,11 @@ func _ready():
 	$HTTPRequest.request_completed.connect(_on_request_completed)
 	$HTTPRequest.request("http://localhost:8000/levels/")
 
+func _process(_delta):
+	var lines_left = max_lines - line_count
+	var lines_left_formatted = "\\ %s" % lines_left
+	$Background/MarginContainer/LinesAvailableLabel.text = lines_left_formatted
+
 func _unhandled_input(event):
 	if line_count >= max_lines:
 		return
