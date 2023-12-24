@@ -12,7 +12,7 @@ var Ball = null
 
 func _ready():
 	%HTTPRequest.request_completed.connect(_on_request_completed)
-	%HTTPRequest.request("http://localhost:8000/levels/")
+	%HTTPRequest.request(GlobalEnvironment.get_route("levels/"))
 
 func _process(_delta):
 	var lines_left = max_lines - line_count

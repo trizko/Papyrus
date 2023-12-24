@@ -34,7 +34,7 @@ func reset_stars(stars):
 		star.set_shader_parameter("useYellow", false)
 
 func send_rating():
-	var url = "http://localhost:8000/ratings/"
+	var url = GlobalEnvironment.get_route("ratings/")
 	var data = {
 		"fun_rating": num_fun_stars,
 		"challenge_rating": num_chal_stars,
