@@ -28,6 +28,7 @@ theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 20
 
 [node name="LinesAvailableLabel" type="Label" parent="Background/MarginContainer"]
+unique_name_in_owner = true
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 0
@@ -50,6 +51,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "CLEAR"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
 
 [connection signal="toggled" from="Background/MarginContainer/PlayReloadButton" to="." method="_on_play_reload_button_toggled"]
 [connection signal="pressed" from="Background/MarginContainer/ClearButton" to="." method="_on_clear_button_pressed"]
