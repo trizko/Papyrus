@@ -7,10 +7,20 @@
 font_size = 100
 font_color = Color(0, 0, 0, 1)
 
-[node name="Level" type="Node"]
+[node name="Level" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_cax5g")
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
+
 [node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,40 +28,57 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Background"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 20
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
 
-[node name="LinesAvailableLabel" type="Label" parent="Background/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+
+[node name="HUDMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="LinesAvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/HUDMarginContainer"]
 unique_name_in_owner = true
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
+mouse_filter = 1
 text = "\\ 2"
 label_settings = SubResource("LabelSettings_y4ftk")
 
-[node name="PlayReloadButton" parent="Background/MarginContainer" instance=ExtResource("2_qg1i0")]
+[node name="PlayReloadButton" parent="MarginContainer/VBoxContainer/HUDMarginContainer" instance=ExtResource("2_qg1i0")]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
+size_flags_vertical = 4
+mouse_filter = 1
 
-[node name="ClearButton" type="Button" parent="Background/MarginContainer"]
+[node name="ClearButton" type="Button" parent="MarginContainer/VBoxContainer/HUDMarginContainer"]
 custom_minimum_size = Vector2(160, 90)
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 0
+size_flags_vertical = 4
+mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "CLEAR"
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
-unique_name_in_owner = true
-
-[connection signal="toggled" from="Background/MarginContainer/PlayReloadButton" to="." method="_on_play_reload_button_toggled"]
-[connection signal="pressed" from="Background/MarginContainer/ClearButton" to="." method="_on_clear_button_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/HUDMarginContainer/PlayReloadButton" to="." method="_on_play_reload_button_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HUDMarginContainer/ClearButton" to="." method="_on_clear_button_pressed"]
