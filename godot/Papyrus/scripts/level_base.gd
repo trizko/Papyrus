@@ -19,11 +19,10 @@ func _process(_delta):
 	var lines_left_formatted = "\\ %s" % lines_left
 	%LinesAvailableLabel.text = lines_left_formatted
 
-func _unhandled_input(event):
-	if line_count >= max_lines:
-		return
-
+func _gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if line_count >= max_lines:
+			return
 		if event.pressed:
 			current_line_instance = line_scene.instantiate()
 			add_child(current_line_instance)
