@@ -49,16 +49,16 @@ the goal line. Here is an example level in JSON format:
     {"start_point_x": 100.0, "start_point_y": 700.0, "end_point_x": 300.0, "end_point_y": 900.0},
     {"start_point_x": 400.0, "start_point_y": 800.0, "end_point_x": 600.0, "end_point_y": 1000.0},
     {"start_point_x": 700.0, "start_point_y": 1100.0, "end_point_x": 900.0, "end_point_y": 1300.0},
-    {"start_point_x": 200.0, "start_point_y": 1400.0, "end_point_x": 400.0, "end_point_y": 1600.0},
-    {"start_point_x": 500.0, "start_point_y": 1500.0, "end_point_x": 700.0, "end_point_y": 1700.0},
+    {"start_point_x": 200.0, "start_point_y": 1400.0, "end_point_x": 400.0, "end_point_y": 1440.0},
+    {"start_point_x": 500.0, "start_point_y": 1440.0, "end_point_x": 700.0, "end_point_y": 1440.0},
   ],
   "goal": {
-    "position_x": 950.0,
-    "position_y": 1800.0
+    "position_x": 540.0,
+    "position_y": 1300.0
   }
 }
 
-The maximum level size could be 1080x1920 pixels. Generate a new level within
+The maximum level size could be 1080x1440 pixels. Generate a new level within
 that range for the x and y axis and respond with only JSON. Remove any
 formatting like newlines and tabs.
 """
