@@ -52,7 +52,7 @@ mouse_filter = 2
 
 [node name="HUDMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-mouse_filter = 2
+mouse_filter = 0
 mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 2
 theme_override_constants/margin_left = 10
