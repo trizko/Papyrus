@@ -95,3 +95,6 @@ func _initialize_level(level_json):
 		level_data["goal"]["position_y"],
 	)
 	%GamePanelContainer.add_child(goal)
+
+func _on_skip_button_pressed():
+	reset_level()
