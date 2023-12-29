@@ -45,12 +45,28 @@ mouse_filter = 2
 mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 2
 
+[node name="TopHUDMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="LinesAvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/TopHUDMarginContainer"]
+unique_name_in_owner = true
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 1
+text = "\\ 2"
+label_settings = SubResource("LabelSettings_y4ftk")
+
 [node name="GamePanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="HUDMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="BottomHUDMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 0
 mouse_force_pass_scroll_events = false
@@ -60,22 +76,13 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="LinesAvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/HUDMarginContainer"]
-unique_name_in_owner = true
-layout_direction = 2
-layout_mode = 2
-size_flags_horizontal = 0
-mouse_filter = 1
-text = "\\ 2"
-label_settings = SubResource("LabelSettings_y4ftk")
-
-[node name="PlayReloadButton" parent="MarginContainer/VBoxContainer/HUDMarginContainer" instance=ExtResource("2_qg1i0")]
+[node name="PlayReloadButton" parent="MarginContainer/VBoxContainer/BottomHUDMarginContainer" instance=ExtResource("2_qg1i0")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
 
-[node name="ClearButton" type="Button" parent="MarginContainer/VBoxContainer/HUDMarginContainer"]
+[node name="ClearButton" type="Button" parent="MarginContainer/VBoxContainer/BottomHUDMarginContainer"]
 custom_minimum_size = Vector2(160, 90)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -85,5 +92,5 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "CLEAR"
 
-[connection signal="toggled" from="MarginContainer/VBoxContainer/HUDMarginContainer/PlayReloadButton" to="." method="_on_play_reload_button_toggled"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HUDMarginContainer/ClearButton" to="." method="_on_clear_button_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/BottomHUDMarginContainer/PlayReloadButton" to="." method="_on_play_reload_button_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BottomHUDMarginContainer/ClearButton" to="." method="_on_clear_button_pressed"]
