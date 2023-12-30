@@ -47,9 +47,9 @@ mouse_default_cursor_shape = 2
 
 [node name="TopHUDMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
 [node name="LinesAvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/TopHUDMarginContainer"]
@@ -72,10 +72,10 @@ layout_mode = 2
 mouse_filter = 0
 mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 100
 
 [node name="SkipButton" type="Button" parent="MarginContainer/VBoxContainer/BottomHUDMarginContainer"]
 custom_minimum_size = Vector2(160, 90)
