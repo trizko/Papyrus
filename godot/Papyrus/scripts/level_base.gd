@@ -34,9 +34,11 @@ func _gui_input(event):
 	elif event is InputEventMouseMotion and current_line_instance:
 		current_line_instance.update_drawing(event.position)
 
-func _on_clear_button_pressed():
-	line_count = 0
-	for line in get_tree().get_nodes_in_group("line"):
+func _on_undo_button_pressed():
+	var lines = get_tree().get_nodes_in_group("line")
+	if len(lines) > 0:
+		var line = lines.pop_back()
+		line_count = len(lines)
 		line.queue_free()
 
 func _on_play_reload_button_toggled(button_pressed):

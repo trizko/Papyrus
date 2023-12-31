@@ -93,7 +93,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
 
-[node name="ClearButton" type="Button" parent="MarginContainer/VBoxContainer/BottomHUDMarginContainer"]
+[node name="UndoButton" type="Button" parent="MarginContainer/VBoxContainer/BottomHUDMarginContainer"]
 custom_minimum_size = Vector2(160, 90)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -101,8 +101,8 @@ size_flags_vertical = 4
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-text = "CLEAR"
+text = "UNDO"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BottomHUDMarginContainer/SkipButton" to="." method="_on_skip_button_pressed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/BottomHUDMarginContainer/PlayReloadButton" to="." method="_on_play_reload_button_toggled"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BottomHUDMarginContainer/ClearButton" to="." method="_on_clear_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BottomHUDMarginContainer/UndoButton" to="." method="_on_undo_button_pressed"]
