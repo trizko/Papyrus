@@ -13,22 +13,29 @@ jobs:
       - name: Checkout the repo 
         uses: actions/checkout@v4
 
-      - name: Create and populate .env file
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: |
-          cat <<EOF > .env
-          OPENAI_API_KEY="$OPENAI_API_KEY"
-          ENVIRONMENT="dev"
-          EOF
-
-      - name: Build image 
-        run: docker build -t ai-stuff-registry/papyrus-server .
-
       - name: Install doctl 
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Create and populate .env file
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          # get connection details for postgres db
+          DB_ID=$(doctl databases list | grep papyrus-db | awk '{print $1}')
+          DB_DATA_JSON=$(doctl databases get $DB_ID --output json)
+          PG_PUBLIC_URI=$(echo $DB_DATA_JSON | jq -r .[].connection.uri)
+
+          # create .env file with secrets
+          cat <<EOF > .env
+          OPENAI_API_KEY="$OPENAI_API_KEY"
+          ENVIRONMENT="dev"
+          PG_URI="$PG_PUBLIC_URI"
+          EOF
+
+      - name: Build image 
+        run: docker build -t ai-stuff-registry/papyrus-server .
 
       - name: Log in to DO Container Registry 
         run: doctl registry login --expiry-seconds 600
