@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://tr1trjkkqr5b"]
+[gd_scene load_steps=2 format=3 uid="uid://tr1trjkkqr5b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_42ua5"]
+font_size = 44
+font_color = Color(0, 0, 0, 1)
 
 [node name="level_end_popup" type="Control"]
 layout_mode = 3
@@ -31,6 +35,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Nice job!"
+label_settings = SubResource("LabelSettings_42ua5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Button" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-text = "Next"
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 50
+text = "Next Level"
