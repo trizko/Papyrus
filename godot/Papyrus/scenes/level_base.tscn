@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b35ak1r6icmdw"]
+[gd_scene load_steps=5 format=3 uid="uid://b35ak1r6icmdw"]
 
 [ext_resource type="Script" path="res://scripts/level_base.gd" id="1_cax5g"]
 [ext_resource type="PackedScene" uid="uid://dkpq67idphey1" path="res://scenes/play_reload_button.tscn" id="2_qg1i0"]
+[ext_resource type="PackedScene" uid="uid://tr1trjkkqr5b" path="res://scenes/level_end_popup.tscn" id="3_1p4lx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y4ftk"]
 font_size = 100
@@ -102,6 +103,10 @@ mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "UNDO"
+
+[node name="level_end_popup" parent="." instance=ExtResource("3_1p4lx")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BottomHUDMarginContainer/SkipButton" to="." method="_on_skip_button_pressed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/BottomHUDMarginContainer/PlayReloadButton" to="." method="_on_play_reload_button_toggled"]
