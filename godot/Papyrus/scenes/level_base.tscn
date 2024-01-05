@@ -104,7 +104,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "UNDO"
 
-[node name="level_end_popup" parent="." instance=ExtResource("3_1p4lx")]
+[node name="LevelEndPopup" parent="." instance=ExtResource("3_1p4lx")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 

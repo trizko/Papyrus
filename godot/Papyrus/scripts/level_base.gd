@@ -52,7 +52,7 @@ func _on_body_entered(body):
 	if body.name == "Goal":
 		Ball.gravity_scale = 0.0
 		Ball.linear_velocity = Vector2.ZERO
-		reset_level()
+		%LevelEndPopup.visible = true
 
 func reset_ball(pos):
 	Ball = ball_scene.instantiate()
