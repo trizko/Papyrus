@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://tr1trjkkqr5b"]
+[gd_scene load_steps=3 format=3 uid="uid://tr1trjkkqr5b"]
+
+[ext_resource type="Script" path="res://scripts/level_end_popup.gd" id="1_hv5rj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_42ua5"]
 font_size = 50
@@ -13,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_hv5rj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(800, 800)
@@ -50,3 +53,5 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 50
 text = "Next Level"
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Button" to="." method="_on_button_pressed"]
