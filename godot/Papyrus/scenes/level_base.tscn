@@ -107,6 +107,7 @@ text = "UNDO"
 [node name="LevelEndPopup" parent="." instance=ExtResource("3_1p4lx")]
 unique_name_in_owner = true
 visible = false
+z_index = 100
 layout_mode = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BottomHUDMarginContainer/SkipButton" to="." method="_on_skip_button_pressed"]
