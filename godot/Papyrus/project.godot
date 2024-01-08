@@ -25,6 +25,10 @@ window/size/viewport_width=1080
 window/size/viewport_height=1920
 window/handheld/orientation=1
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
