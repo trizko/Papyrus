@@ -10,6 +10,7 @@ import asyncpg
 class RatingCreate(BaseModel):
     challenge_rating: int
     fun_rating: int
+    impossible: bool
     json_level: Json
 
 class Rating(RatingCreate):
@@ -21,8 +22,8 @@ async def create_rating(rating: RatingCreate) -> Rating:
     json_level_str = json.dumps(rating.json_level)
     conn = await asyncpg.connect(os.getenv("PG_URI"))
     row = await conn.fetchrow(
-        'INSERT INTO ratings (challenge_rating, fun_rating, json_level) VALUES ($1, $2, $3) RETURNING *',
-        rating.challenge_rating, rating.fun_rating, json_level_str
+        'INSERT INTO ratings (challenge_rating, fun_rating, impossible, json_level) VALUES ($1, $2, $3, $4) RETURNING *',
+        rating.challenge_rating, rating.fun_rating, rating.impossible, json_level_str
     )
     await conn.close()
     
