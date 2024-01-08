@@ -4,6 +4,7 @@ var fun_stars: Array[ShaderMaterial]
 var chal_stars: Array[ShaderMaterial]
 var num_fun_stars: int
 var num_chal_stars: int
+var impossible: bool = false
 
 func _ready():
 	fun_stars = [
@@ -38,6 +39,7 @@ func send_rating():
 	var data = {
 		"fun_rating": num_fun_stars,
 		"challenge_rating": num_chal_stars,
+		"impossible": impossible,
 		"json_level": GlobalEnvironment.level_json,
 	}
 	var data_json = JSON.stringify(data)
