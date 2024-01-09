@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://dptssbc1cpyv"]
+[gd_scene load_steps=19 format=3 uid="uid://dptssbc1cpyv"]
 
 [ext_resource type="Shader" path="res://shaders/star.gdshader" id="1_pxen0"]
 [ext_resource type="Script" path="res://scripts/rating.gd" id="1_u33ae"]
+[ext_resource type="Shader" path="res://shaders/checkbox.gdshader" id="3_ekqh7"]
 [ext_resource type="StyleBox" uid="uid://dr2e5op65n7o4" path="res://styles/submit_button.tres" id="3_w43e3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ftjlv"]
@@ -59,6 +60,10 @@ shader_parameter/useYellow = false
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wipvh"]
 shader = ExtResource("1_pxen0")
 shader_parameter/useYellow = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gqkd"]
+shader = ExtResource("3_ekqh7")
+shader_parameter/isChecked = false
 
 [node name="rating" type="ColorRect"]
 anchors_preset = 15
@@ -186,6 +191,20 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
 
+[node name="ImpossibleLabel" type="Label" parent="MainContainer"]
+layout_mode = 2
+text = "Was this puzzle impossible?"
+label_settings = SubResource("LabelSettings_xtsd4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ImpossibleCheckbox" type="Button" parent="MainContainer"]
+material = SubResource("ShaderMaterial_0gqkd")
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
 [node name="CenterContainer" type="CenterContainer" parent="MainContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -213,4 +232,5 @@ text = "Submit Feedback"
 [connection signal="pressed" from="MainContainer/ChalRatingContainer/Stars3" to="." method="_on_chal_stars_pressed" binds= [3]]
 [connection signal="pressed" from="MainContainer/ChalRatingContainer/Stars4" to="." method="_on_chal_stars_pressed" binds= [4]]
 [connection signal="pressed" from="MainContainer/ChalRatingContainer/Stars5" to="." method="_on_chal_stars_pressed" binds= [5]]
+[connection signal="pressed" from="MainContainer/ImpossibleCheckbox" to="." method="_on_impossible_checkbox_pressed"]
 [connection signal="pressed" from="MainContainer/CenterContainer/SubmitButton" to="." method="_on_submit_button_pressed"]
