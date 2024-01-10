@@ -29,8 +29,10 @@ func _ready():
 func reset_all():
 	reset_stars(fun_stars)
 	reset_stars(chal_stars)
+	impossible_check.set_shader_parameter("isChecked", false)
 	num_fun_stars = 0
 	num_chal_stars = 0
+	impossible = false
 
 func reset_stars(stars):
 	for star in stars:
