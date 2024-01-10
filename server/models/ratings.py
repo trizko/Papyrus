@@ -10,7 +10,7 @@ import asyncpg
 class RatingCreate(BaseModel):
     challenge_rating: int
     fun_rating: int
-    impossible: bool
+    impossible: bool = False
     json_level: Json
 
 class Rating(RatingCreate):
