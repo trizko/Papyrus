@@ -35,27 +35,70 @@ get the ball to the goal. There will be obstacles in the way of the goal from
 the starting position of the ball that the player will have to draw lines
 around. The user then presses the "Play" button to turn on the gravity for the
 ball and the ball will fall on the lines and obstacles and, hopefully, get to
-the goal line. Here is an example level in JSON format:
+the goal line. Here are some example levels in JSON format:
 
+Example 1:
 {
-  "max_lines": 2,
   "ball": {
-    "position_x": 100.0,
-    "position_y": 50.0
+    "position_x": 350,
+    "position_y": 50
   },
-  "obstacles": [
-    {"start_point_x": 100.0, "start_point_y": 300.0, "end_point_x": 300.0, "end_point_y": 300.0},
-    {"start_point_x": 300.0, "start_point_y": 500.0, "end_point_x": 500.0, "end_point_y": 500.0},
-    {"start_point_x": 100.0, "start_point_y": 700.0, "end_point_x": 300.0, "end_point_y": 900.0},
-    {"start_point_x": 400.0, "start_point_y": 800.0, "end_point_x": 600.0, "end_point_y": 1000.0},
-    {"start_point_x": 700.0, "start_point_y": 1100.0, "end_point_x": 900.0, "end_point_y": 1300.0},
-    {"start_point_x": 200.0, "start_point_y": 1400.0, "end_point_x": 400.0, "end_point_y": 1440.0},
-    {"start_point_x": 500.0, "start_point_y": 1440.0, "end_point_x": 700.0, "end_point_y": 1440.0},
-  ],
   "goal": {
-    "position_x": 540.0,
-    "position_y": 1300.0
-  }
+    "position_x": 700,
+    "position_y": 1300
+  },
+  "max_lines": 3,
+  "obstacles": [
+    { "end_point_x": 300, "end_point_y": 300, "start_point_x": 100, "start_point_y": 300 },
+    { "end_point_x": 500, "end_point_y": 500, "start_point_x": 300, "start_point_y": 500 },
+    { "end_point_x": 300, "end_point_y": 900, "start_point_x": 100, "start_point_y": 700 },
+    { "end_point_x": 600, "end_point_y": 1000, "start_point_x": 400, "start_point_y": 800 },
+    { "end_point_x": 900, "end_point_y": 1300, "start_point_x": 700, "start_point_y": 1100 },
+    { "end_point_x": 400, "end_point_y": 1440, "start_point_x": 200, "start_point_y": 1400 },
+    { "end_point_x": 700, "end_point_y": 1440, "start_point_x": 500, "start_point_y": 1440 }
+  ]
+}
+
+Example 2:
+{
+  "ball": {
+    "position_x": 600,
+    "position_y": 100
+  },
+  "goal": {
+    "position_x": 900,
+    "position_y": 1300
+  },
+  "max_lines": 3,
+  "obstacles": [
+    { "end_point_x": 400, "end_point_y": 400, "start_point_x": 200, "start_point_y": 400 },
+    { "end_point_x": 800, "end_point_y": 600, "start_point_x": 600, "start_point_y": 600 },
+    { "end_point_x": 400, "end_point_y": 1000, "start_point_x": 200, "start_point_y": 800 },
+    { "end_point_x": 800, "end_point_y": 1200, "start_point_x": 600, "start_point_y": 1000 },
+    { "end_point_x": 400, "end_point_y": 1200, "start_point_x": 200, "start_point_y": 1200 }
+  ]
+}
+
+Example 3:
+{
+  "ball": {
+    "position_x": 200,
+    "position_y": 100
+  },
+  "goal": {
+    "position_x": 740,
+    "position_y": 1000
+  },
+  "max_lines": 3,
+  "obstacles": [
+    { "end_point_x": 400, "end_point_y": 300, "start_point_x": 200, "start_point_y": 300 },
+    { "end_point_x": 500, "end_point_y": 500, "start_point_x": 300, "start_point_y": 500 },
+    { "end_point_x": 400, "end_point_y": 900, "start_point_x": 200, "start_point_y": 700 },
+    { "end_point_x": 600, "end_point_y": 1000, "start_point_x": 400, "start_point_y": 800 },
+    { "end_point_x": 900, "end_point_y": 1300, "start_point_x": 700, "start_point_y": 1100 },
+    { "end_point_x": 400, "end_point_y": 1240, "start_point_x": 200, "start_point_y": 1200 },
+    { "end_point_x": 700, "end_point_y": 1240, "start_point_x": 500, "start_point_y": 1240 }
+  ]
 }
 
 The maximum level size could be 1080x1440 pixels. Generate a new level within
