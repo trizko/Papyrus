@@ -1,0 +1,44 @@
+name: Run DB Migrations
+
+on:
+  workflow_dispatch:
+    inputs:
+      migration_command:
+        description: 'Migration Command'
+        required: true
+        type: choice
+        options:
+          - 'upgrade'
+          - 'downgrade'
+        default: 'upgrade'
+      revision:
+        description: 'Revision ID'
+        required: true
+        default: 'head'
+
+jobs:
+  run-migrations:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install alembic psycopg2-binary
+
+      - name: Run Alembic Migration
+        env:
+          MIGRATION_COMMAND: ${{ github.event.inputs.migration_command }}
+          REVISION: ${{ github.event.inputs.revision }}
+        run: |
+          alembic $MIGRATION_COMMAND $REVISION
