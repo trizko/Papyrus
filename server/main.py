@@ -9,8 +9,6 @@ from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from openai import OpenAI
-from pydantic import BaseModel
-from typing import Optional
 
 from cache import MemoryCache, RedisCache
 from models.ratings import RatingCreate, Rating, create_rating
@@ -147,9 +145,9 @@ app = FastAPI(lifespan=lifespan)
 async def generate_text():
     try:
         return cache.pop("levels")
-    except:
+    except Exception:
         raise HTTPException(
-            status_code=404, detail=f"Level number {level_number} not found"
+            status_code=404, detail="No more levels available. Please wait and try again later."
         )
 
 
