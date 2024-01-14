@@ -12,14 +12,15 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '353ca6024919'
+revision: str = "353ca6024919"
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    op.execute("""
+    op.execute(
+        """
     CREATE TABLE IF NOT EXISTS ratings (
         rating_id SERIAL PRIMARY KEY,
         challenge_rating INT CHECK (challenge_rating BETWEEN 0 AND 5),
@@ -44,12 +45,15 @@ def upgrade() -> None:
     BEFORE UPDATE ON ratings
     FOR EACH ROW
     EXECUTE FUNCTION update_modified_at();
-    """)
+    """
+    )
 
 
 def downgrade() -> None:
-    op.execute("""
+    op.execute(
+        """
     DROP TABLE IF EXISTS ratings;
     DROP FUNCTION IF EXISTS update_modified_at;
     DROP TRIGGER IF EXISTS update_modified_at_before_update ON ratings;
-    """)
+    """
+    )

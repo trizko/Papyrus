@@ -20,10 +20,14 @@ logger = logging.getLogger("uvicorn")
 
 # initialize cache
 redis_cluster_nodes = [{"host": "127.0.0.1", "port": "6379"}]
-cache = MemoryCache() if os.getenv('ENVIRONMENT') != "prod" else RedisCache(redis_cluster_nodes)
+cache = (
+    MemoryCache()
+    if os.getenv("ENVIRONMENT") != "prod"
+    else RedisCache(redis_cluster_nodes)
+)
 
 # initialize app and background worker
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 scheduler = BackgroundScheduler()
 
 PROMPT = """
@@ -106,6 +110,7 @@ that range for the x and y axis and respond with only JSON. Remove any
 formatting like newlines and tabs.
 """
 
+
 def generate_level():
     if cache.length("levels") > 99:
         return
@@ -118,31 +123,35 @@ def generate_level():
                 "content": PROMPT,
             }
         ],
-        response_format={
-            "type": "json_object"
-        }
+        response_format={"type": "json_object"},
     )
     logger.info("Generating new level from GPT API.")
     cache.push("levels", json.loads(response.choices[0].message.content))
     logger.info("Added new level to cache.")
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # startup events that happen before the yielding
-    scheduler.add_job(generate_level, 'interval', seconds=10)
+    scheduler.add_job(generate_level, "interval", seconds=10)
     scheduler.start()
     yield
     # run shutdown events when lifespan yields
     scheduler.shutdown()
 
+
 app = FastAPI(lifespan=lifespan)
+
 
 @app.get("/levels/")
 async def generate_text():
     try:
         return cache.pop("levels")
     except:
-        raise HTTPException(status_code=404, detail=f"Level number {level_number} not found")
+        raise HTTPException(
+            status_code=404, detail=f"Level number {level_number} not found"
+        )
+
 
 @app.post("/ratings/", response_model=Rating)
 async def create_rating_endpoint(rating: RatingCreate):
@@ -150,6 +159,7 @@ async def create_rating_endpoint(rating: RatingCreate):
     if new_rating is None:
         raise HTTPException(status_code=400, detail="Error creating rating")
     return new_rating
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

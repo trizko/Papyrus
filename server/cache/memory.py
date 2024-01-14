@@ -1,5 +1,6 @@
 from .base import BaseCache
 
+
 class MemoryCache(BaseCache):
     def __init__(self):
         self.cache = {}
