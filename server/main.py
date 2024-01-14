@@ -49,7 +49,7 @@ Example 1:
     "position_x": 700,
     "position_y": 1300
   },
-  "max_lines": 3,
+  "max_lines": 1,
   "obstacles": [
     { "end_point_x": 300, "end_point_y": 300, "start_point_x": 100, "start_point_y": 300 },
     { "end_point_x": 500, "end_point_y": 500, "start_point_x": 300, "start_point_y": 500 },
@@ -71,7 +71,7 @@ Example 2:
     "position_x": 900,
     "position_y": 1300
   },
-  "max_lines": 3,
+  "max_lines": 1,
   "obstacles": [
     { "end_point_x": 400, "end_point_y": 400, "start_point_x": 200, "start_point_y": 400 },
     { "end_point_x": 800, "end_point_y": 600, "start_point_x": 600, "start_point_y": 600 },
@@ -91,7 +91,7 @@ Example 3:
     "position_x": 740,
     "position_y": 1000
   },
-  "max_lines": 3,
+  "max_lines": 1,
   "obstacles": [
     { "end_point_x": 400, "end_point_y": 300, "start_point_x": 200, "start_point_y": 300 },
     { "end_point_x": 500, "end_point_y": 500, "start_point_x": 300, "start_point_y": 500 },
