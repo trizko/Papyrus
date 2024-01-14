@@ -36,6 +36,23 @@ jobs:
           pip install --upgrade pip
           pip install alembic psycopg2-binary
 
+      - name: Install doctl 
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Create and populate .env file
+        run: |
+          # get connection details for postgres db
+          DB_ID=$(doctl databases list | grep papyrus-db | awk '{print $1}')
+          DB_DATA_JSON=$(doctl databases get $DB_ID --output json)
+          PG_PUBLIC_URI=$(echo $DB_DATA_JSON | jq -r .[].connection.uri)
+
+          # create .env file with secrets
+          cat <<EOF > .env
+          PG_URI="$PG_PUBLIC_URI"
+          EOF
+
       - name: Run Alembic Migration
         env:
           MIGRATION_COMMAND: ${{ github.event.inputs.migration_command }}
