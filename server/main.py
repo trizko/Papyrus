@@ -147,7 +147,8 @@ async def generate_text():
         return cache.pop("levels")
     except Exception:
         raise HTTPException(
-            status_code=404, detail="No more levels available. Please wait and try again later."
+            status_code=404,
+            detail="No more levels available. Please wait and try again later.",
         )
 
 
