@@ -32,16 +32,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Bouncy Mode"
 
-[node name="GravityShiftMode" type="Button" parent="VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "Gravity Shift Mode"
-
-[node name="OptionsButton" type="Button" parent="VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "Options"
-
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
