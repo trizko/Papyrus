@@ -67,6 +67,10 @@ func reset_level():
 
 func _on_request_completed(_result, _response_code, _headers, body):
 	var level_json = JSON.parse_string(body.get_string_from_utf8())
+	if (GlobalEnvironment.bounciness == 1.0):
+		level_json["game_mode"] = "bouncy"
+	else:
+		level_json["game_mode"] = "normal"
 	GlobalEnvironment.level_json = JSON.stringify(level_json)
 	_initialize_level(level_json)
 
