@@ -59,6 +59,7 @@ func reset_ball(pos):
 	Ball.set_position(pos)
 	%GamePanelContainer.add_child(Ball)
 	Ball.gravity_scale = 0.0
+	Ball.physics_material_override.bounce = GlobalEnvironment.bounciness
 	Ball.body_entered.connect(_on_body_entered)
 
 func reset_level():

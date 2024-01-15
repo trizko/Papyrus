@@ -38,3 +38,4 @@ size_flags_vertical = 3
 color = Color(0.0431373, 0.14902, 0.164706, 1)
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/NormalModeButton" to="." method="_on_normal_mode_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/BouncyMode" to="." method="_on_bouncy_mode_pressed"]
