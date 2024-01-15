@@ -53,6 +53,16 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/TopHUDMarginContainer"]
+custom_minimum_size = Vector2(160, 90)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+text = "BACK"
+
 [node name="LinesAvailableLabel" type="Label" parent="MarginContainer/VBoxContainer/TopHUDMarginContainer"]
 unique_name_in_owner = true
 layout_direction = 2
@@ -110,6 +120,7 @@ visible = false
 z_index = 100
 layout_mode = 1
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TopHUDMarginContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BottomHUDMarginContainer/SkipButton" to="." method="_on_skip_button_pressed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/BottomHUDMarginContainer/PlayReloadButton" to="." method="_on_play_reload_button_toggled"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BottomHUDMarginContainer/UndoButton" to="." method="_on_undo_button_pressed"]

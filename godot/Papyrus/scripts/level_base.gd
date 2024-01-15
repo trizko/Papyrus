@@ -108,3 +108,7 @@ func _on_skip_button_pressed():
 
 func _on_level_end_popup_next_level_pressed():
 	reset_level()
+
+func _on_back_button_pressed():
+	var main_scene = preload("res://scenes/main.tscn")
+	get_tree().change_scene_to_packed(main_scene)
