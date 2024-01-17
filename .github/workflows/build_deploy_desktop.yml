@@ -1,4 +1,4 @@
-name: "CI/CD - Client"
+name: "CI/CD - Desktop"
 
 on:
   workflow_dispatch:
