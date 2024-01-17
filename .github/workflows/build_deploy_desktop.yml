@@ -1,7 +1,5 @@
 name: "CI/CD - Client"
 
-# The workflow_dispatch event signifies that this action is deployed manually 
-# through the Github UI
 on:
   workflow_dispatch:
 
