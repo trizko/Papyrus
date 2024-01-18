@@ -61,3 +61,20 @@ jobs:
         # run the export for android
         mkdir -v -p ../../builds/android/
         ./Godot_v4.1.3-stable_linux.x86_64 --headless --export-debug Android ../../builds/android/Papyrus.apk
+
+    - name: Download butler
+      run: |
+        # Download butler
+        curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+        unzip butler.zip
+        chmod +x butler
+
+        # Verify butler installation
+        ./butler -V
+
+    - name: Deploy to itch.io
+      run: |
+        # Push to itch.io
+        ./butler push ../../builds/android/Papyrus.apk tonloco/papyrus:android-alpha
+      env:
+        BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
