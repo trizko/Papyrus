@@ -53,11 +53,14 @@ jobs:
         mkdir -p ~/.config/godot
         mv ./editor-settings-gh-actions.tres ~/.config/godot/editor_settings-4.tres
 
-    - name: Export Game
+    - name: Import assets
       run: |
         # run editor once in headless mode to import assets
         ./Godot_v4.2.1-stable_linux.x86_64 --headless --editor --quit-after 2
+        ls -la .godot/imported/
 
+    - name: Export Game
+      run: |
         # run the export for android
         mkdir -v -p ../../builds/android/
         ./Godot_v4.2.1-stable_linux.x86_64 --headless --export-debug Android ../../builds/android/Papyrus.apk
