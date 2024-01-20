@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddwnk70ycewlm"]
 
-[ext_resource type="Shader" path="res://shaders/object.gdshader" id="1_cdp17"]
+[ext_resource type="Shader" path="res://src/entities/ball/object.gdshader" id="1_gi074"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c6pgy"]
 
@@ -8,7 +8,7 @@
 radius = 18.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pkfe1"]
-shader = ExtResource("1_cdp17")
+shader = ExtResource("1_gi074")
 
 [node name="RigidBody2D (Object)" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_c6pgy")

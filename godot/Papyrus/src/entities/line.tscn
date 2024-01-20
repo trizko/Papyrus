@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://oy7aw1kv4i2o"]
 
-[ext_resource type="Script" path="res://scripts/line.gd" id="1_dcw6n"]
+[ext_resource type="Script" path="res://src/entities/line.gd" id="1_dcw6n"]
 
 [node name="line" type="StaticBody2D" groups=["line"]]
 script = ExtResource("1_dcw6n")
