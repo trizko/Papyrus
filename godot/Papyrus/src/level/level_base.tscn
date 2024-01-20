@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b35ak1r6icmdw"]
 
 [ext_resource type="Script" path="res://src/level/level_base.gd" id="1_rxxr8"]
-[ext_resource type="PackedScene" uid="uid://dkpq67idphey1" path="res://src/ui/play_reload_button.tscn" id="2_hpg7l"]
+[ext_resource type="PackedScene" uid="uid://dkpq67idphey1" path="res://src/ui/play_reload_button.tscn" id="2_c5vco"]
 [ext_resource type="PackedScene" uid="uid://tr1trjkkqr5b" path="res://src/level/level_end_popup.tscn" id="3_fyqsj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y4ftk"]
@@ -98,7 +98,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "SKIP"
 
-[node name="PlayReloadButton" parent="MarginContainer/VBoxContainer/BottomHUDMarginContainer" instance=ExtResource("2_hpg7l")]
+[node name="PlayReloadButton" parent="MarginContainer/VBoxContainer/BottomHUDMarginContainer" instance=ExtResource("2_c5vco")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

@@ -1,9 +1,9 @@
 extends Control
 
-var line_scene = preload("res://scenes/line.tscn")
-var ball_scene = preload("res://scenes/object.tscn")
-var obstacle_scene = preload("res://scenes/obstacle.tscn")
-var goal_scene = preload("res://scenes/goal.tscn")
+var line_scene = preload("res://src/entities/line.tscn")
+var ball_scene = preload("res://src/entities/ball/object.tscn")
+var obstacle_scene = preload("res://src/entities/obstacle.tscn")
+var goal_scene = preload("res://src/entities/goal.tscn")
 var line_count = 0
 var max_lines = 0
 var ball_start_position = null
@@ -110,5 +110,5 @@ func _on_level_end_popup_next_level_pressed():
 	reset_level()
 
 func _on_back_button_pressed():
-	var main_scene = preload("res://scenes/main.tscn")
+	var main_scene = preload("res://src/ui/main.tscn")
 	get_tree().change_scene_to_packed(main_scene)
