@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 var line_scene = preload("res://src/entities/line.tscn")
 var ball_scene = preload("res://src/entities/ball/object.tscn")
@@ -17,9 +17,8 @@ func _ready():
 func _process(_delta):
 	var lines_left = max_lines - line_count
 	var lines_left_formatted = "\\ %s" % lines_left
-	%LinesAvailableLabel.text = lines_left_formatted
 
-func _gui_input(event):
+func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if line_count >= max_lines:
 			return
