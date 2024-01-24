@@ -57,7 +57,7 @@ func _on_body_entered(body):
 func reset_ball(pos):
 	Ball = ball_scene.instantiate()
 	Ball.set_position(pos)
-	%GamePanelContainer.add_child(Ball)
+	add_child(Ball)
 	Ball.gravity_scale = 0.0
 	Ball.physics_material_override.bounce = GlobalEnvironment.bounciness
 	Ball.body_entered.connect(_on_body_entered)
@@ -93,7 +93,7 @@ func _initialize_level(level_json):
 		var obstacle = obstacle_scene.instantiate()
 		obstacle.start_point = Vector2(o["start_point_x"], o["start_point_y"])
 		obstacle.end_point = Vector2(o["end_point_x"], o["end_point_y"])
-		%GamePanelContainer.add_child(obstacle)
+		add_child(obstacle)
 
 	# initialize goal
 	var goal = goal_scene.instantiate()
@@ -101,7 +101,7 @@ func _initialize_level(level_json):
 		level_data["goal"]["position_x"],
 		level_data["goal"]["position_y"],
 	)
-	%GamePanelContainer.add_child(goal)
+	add_child(goal)
 
 func _on_skip_button_pressed():
 	reset_level()
