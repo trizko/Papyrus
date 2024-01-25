@@ -16,7 +16,7 @@ func _ready():
 
 func _process(_delta):
 	var lines_left = max_lines - line_count
-	var lines_left_formatted = "\\ %s" % lines_left
+	var _lines_left_formatted = "\\ %s" % lines_left
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
