@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkyrxl0uihd00"]
+[gd_scene load_steps=3 format=3 uid="uid://dwckgsk8mv87w"]
 
-[ext_resource type="PackedScene" uid="uid://b35ak1r6icmdw" path="res://src/level/level_base.tscn" id="1_pnn1m"]
-[ext_resource type="PackedScene" uid="uid://oavmobpu20x" path="res://src/ui/ui.tscn" id="2_fwad7"]
+[ext_resource type="PackedScene" uid="uid://oavmobpu20x" path="res://src/ui/ui.tscn" id="1_gqev8"]
+[ext_resource type="PackedScene" uid="uid://b35ak1r6icmdw" path="res://src/level/level_base.tscn" id="2_uere4"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Level" parent="." instance=ExtResource("1_pnn1m")]
+[node name="Level" parent="." instance=ExtResource("2_uere4")]
 
-[node name="UI" parent="." instance=ExtResource("2_fwad7")]
+[node name="UI" parent="." instance=ExtResource("1_gqev8")]
 layout_mode = 1
