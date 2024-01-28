@@ -1,5 +1,7 @@
 extends TextureButton
 
+signal play_reload_toggled(state: bool)
+
 enum State {
 	PLAY,
 	RELOAD
@@ -16,10 +18,12 @@ func update_texture():
 	else:
 		self.texture_normal = preload("res://art/images/play.svg")
 
-func _on_toggled(_button_pressed):
+func _on_toggled(toggled_on):
 	if current_state == State.PLAY:
 		current_state = State.RELOAD
 	else:
 		current_state = State.PLAY
+
+	play_reload_toggled.emit(toggled_on)
 
 	update_texture()
