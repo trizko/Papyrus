@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Level" parent="." instance=ExtResource("2_uere4")]
-
 [node name="UI" parent="." instance=ExtResource("1_gqev8")]
 layout_mode = 1
+
+[node name="Level" parent="UI" instance=ExtResource("2_uere4")]
