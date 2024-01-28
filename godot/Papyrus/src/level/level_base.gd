@@ -40,13 +40,6 @@ func _on_undo_button_pressed():
 		line_count = len(lines)
 		line.queue_free()
 
-func _on_play_reload_button_toggled(button_pressed):
-	if (button_pressed):
-		Ball.gravity_scale = 1.0
-	else:
-		Ball.queue_free()
-		reset_ball(ball_start_position)
-
 func _on_body_entered(body):
 	if body.name == "Goal":
 		Ball.gravity_scale = 0.0
@@ -111,3 +104,10 @@ func _on_level_end_popup_next_level_pressed():
 func _on_back_button_pressed():
 	var main_scene = preload("res://src/ui/main.tscn")
 	get_tree().change_scene_to_packed(main_scene)
+
+func _on_ui_play_reload_toggled(state: bool):
+	if (state):
+		Ball.gravity_scale = 1.0
+	else:
+		Ball.queue_free()
+		reset_ball(ball_start_position)
