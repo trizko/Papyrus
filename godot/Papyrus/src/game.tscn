@@ -18,3 +18,4 @@ layout_mode = 1
 [node name="Level" parent="UI" instance=ExtResource("2_uere4")]
 
 [connection signal="play_reload_toggled" from="UI" to="UI/Level" method="_on_ui_play_reload_toggled"]
+[connection signal="lines_left" from="UI/Level" to="UI" method="_on_level_lines_left"]

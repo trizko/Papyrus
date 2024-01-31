@@ -1,5 +1,7 @@
 extends Node2D
 
+signal lines_left(lines_left: int)
+
 var line_scene = preload("res://src/entities/line.tscn")
 var ball_scene = preload("res://src/entities/ball/object.tscn")
 var obstacle_scene = preload("res://src/entities/obstacle.tscn")
@@ -14,10 +16,6 @@ func _ready():
 	%HTTPRequest.request_completed.connect(_on_request_completed)
 	%HTTPRequest.request(GlobalEnvironment.get_route("levels/"))
 
-func _process(_delta):
-	var lines_left = max_lines - line_count
-	var _lines_left_formatted = "\\ %s" % lines_left
-
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if line_count >= max_lines:
@@ -30,6 +28,7 @@ func _unhandled_input(event):
 			current_line_instance.finish_drawing()
 			current_line_instance = null
 			line_count = line_count + 1
+			lines_left.emit(max_lines - line_count)
 	elif event is InputEventMouseMotion and current_line_instance:
 		current_line_instance.update_drawing(event.position)
 
@@ -72,6 +71,7 @@ func _initialize_level(level_json):
 
 	# get and set line count
 	max_lines = level_data["max_lines"]
+	lines_left.emit(max_lines)
 
 	# get ball starting position and instantiate ball
 	ball_start_position = Vector2(
