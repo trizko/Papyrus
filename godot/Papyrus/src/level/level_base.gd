@@ -32,13 +32,6 @@ func _unhandled_input(event):
 	elif event is InputEventMouseMotion and current_line_instance:
 		current_line_instance.update_drawing(event.position)
 
-func _on_undo_button_pressed():
-	var lines = get_tree().get_nodes_in_group("line")
-	if len(lines) > 0:
-		var line = lines.pop_back()
-		line_count = len(lines)
-		line.queue_free()
-
 func _on_body_entered(body):
 	if body.name == "Goal":
 		Ball.gravity_scale = 0.0
@@ -111,3 +104,11 @@ func _on_ui_play_reload_toggled(state: bool):
 	else:
 		Ball.queue_free()
 		reset_ball(ball_start_position)
+
+func _on_ui_undo_pressed():
+	var lines = get_tree().get_nodes_in_group("line")
+	if len(lines) > 0:
+		var line = lines.pop_back()
+		line_count = len(lines)
+		lines_left.emit(max_lines - line_count)
+		line.queue_free()

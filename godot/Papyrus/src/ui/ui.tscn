@@ -90,3 +90,4 @@ text = "UNDO"
 
 [connection signal="pressed" from="VBoxContainer/TopHUDMarginContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="play_reload_toggled" from="VBoxContainer/BottomHUDMarginContainer/PlayReloadButton" to="." method="_on_play_reload_toggled"]
+[connection signal="pressed" from="VBoxContainer/BottomHUDMarginContainer/UndoButton" to="." method="_on_undo_button_pressed"]
