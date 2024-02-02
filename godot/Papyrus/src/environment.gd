@@ -1,6 +1,6 @@
 extends Node
 
-var level_scene = preload("res://src/level/level_base.tscn")
+var game_scene = preload("res://src/game.tscn")
 var rating_scene = preload("res://src/ui/rating.tscn")
 
 var level_json: String
