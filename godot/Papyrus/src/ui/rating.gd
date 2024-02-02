@@ -75,4 +75,5 @@ func _on_impossible_checkbox_pressed():
 func _on_submit_button_pressed():
 	await send_rating()
 	reset_all()
-	get_tree().change_scene_to_packed(GlobalEnvironment.game_scene)
+	var game_scene = load("res://src/game.tscn")
+	get_tree().change_scene_to_packed(game_scene)

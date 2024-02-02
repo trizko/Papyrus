@@ -47,7 +47,8 @@ func reset_ball(pos):
 	Ball.body_entered.connect(_on_body_entered)
 
 func reset_level():
-	get_tree().change_scene_to_packed(GlobalEnvironment.rating_scene)
+	var rating_scene = load("res://src/ui/rating.tscn")
+	get_tree().change_scene_to_packed(rating_scene)
 
 func _on_request_completed(_result, _response_code, _headers, body):
 	var level_json = JSON.parse_string(body.get_string_from_utf8())
