@@ -89,7 +89,7 @@ func _initialize_level(level_json):
 	)
 	add_child(goal)
 
-func _on_skip_button_pressed():
+func _on_ui_skip_button_pressed():
 	reset_level()
 
 func _on_level_end_popup_next_level_pressed():

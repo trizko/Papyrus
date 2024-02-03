@@ -2,6 +2,7 @@ extends MarginContainer
 
 signal play_reload_toggled(state: bool)
 signal undo_pressed()
+signal skip_button_pressed()
 
 func _on_play_reload_toggled(state):
 	play_reload_toggled.emit(state)
@@ -14,3 +15,6 @@ func _on_level_lines_left(lines_left:int):
 
 func _on_undo_button_pressed():
 	undo_pressed.emit()
+
+func _on_skip_button_pressed():
+	skip_button_pressed.emit()
