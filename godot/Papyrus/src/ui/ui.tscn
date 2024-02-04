@@ -40,6 +40,7 @@ size_flags_vertical = 4
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
 text = "BACK"
 
 [node name="LinesAvailableLabel" type="Label" parent="VBoxContainer/TopHUDMarginContainer"]
@@ -70,6 +71,7 @@ size_flags_vertical = 4
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
 text = "SKIP"
 
 [node name="PlayReloadButton" parent="VBoxContainer/BottomHUDMarginContainer" instance=ExtResource("1_1cc73")]
@@ -86,6 +88,7 @@ size_flags_vertical = 4
 mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
 text = "UNDO"
 
 [connection signal="pressed" from="VBoxContainer/TopHUDMarginContainer/BackButton" to="." method="_on_back_button_pressed"]
