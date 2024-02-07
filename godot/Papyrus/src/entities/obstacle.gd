@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name Obstacle
 
 var start_point : Vector2
 var end_point : Vector2
