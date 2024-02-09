@@ -16,12 +16,14 @@ mouse_filter = 2
 [node name="UI" parent="." instance=ExtResource("1_gqev8")]
 layout_mode = 1
 
-[node name="Level" parent="UI" instance=ExtResource("2_uere4")]
-
-[node name="Camera" parent="." instance=ExtResource("3_2q4e8")]
+[node name="Camera" parent="UI" instance=ExtResource("3_2q4e8")]
 position = Vector2(540, 960)
 
-[connection signal="play_reload_toggled" from="UI" to="UI/Level" method="_on_ui_play_reload_toggled"]
-[connection signal="skip_button_pressed" from="UI" to="UI/Level" method="_on_ui_skip_button_pressed"]
-[connection signal="undo_pressed" from="UI" to="UI/Level" method="_on_ui_undo_pressed"]
-[connection signal="lines_left" from="UI/Level" to="UI" method="_on_level_lines_left"]
+[node name="Level" parent="UI/Camera" instance=ExtResource("2_uere4")]
+position = Vector2(-959.998, 540.003)
+rotation = -1.5708
+
+[connection signal="play_reload_toggled" from="UI" to="UI/Camera/Level" method="_on_ui_play_reload_toggled"]
+[connection signal="skip_button_pressed" from="UI" to="UI/Camera/Level" method="_on_ui_skip_button_pressed"]
+[connection signal="undo_pressed" from="UI" to="UI/Camera/Level" method="_on_ui_undo_pressed"]
+[connection signal="lines_left" from="UI/Camera/Level" to="UI" method="_on_level_lines_left"]
