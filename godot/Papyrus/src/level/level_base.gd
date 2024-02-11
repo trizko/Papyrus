@@ -1,6 +1,7 @@
 extends Node2D
 
 signal lines_left(lines_left: int)
+signal trigger_rotatation()
 
 var line_scene = preload("res://src/entities/line.tscn")
 var ball_scene = preload("res://src/entities/ball/object.tscn")
@@ -33,6 +34,10 @@ func _unhandled_input(event):
 		current_line_instance.update_drawing(event.position)
 
 func _on_body_entered(body):
+	if body.is_in_group("obstacle"):
+		Ball.gravity_scale = 0.0
+		Ball.linear_velocity = Vector2.ZERO
+		trigger_rotatation.emit()
 	if body.name == "Goal":
 		Ball.gravity_scale = 0.0
 		Ball.linear_velocity = Vector2.ZERO
@@ -113,3 +118,6 @@ func _on_ui_undo_pressed():
 		line_count = len(lines)
 		lines_left.emit(max_lines - line_count)
 		line.queue_free()
+
+func _on_camera_rotate_finished():
+	Ball.gravity_scale = 1.0
