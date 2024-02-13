@@ -7,19 +7,15 @@
 font_size = 100
 font_color = Color(0, 0, 0, 1)
 
-[node name="UI" type="MarginContainer"]
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_p4s1u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-mouse_force_pass_scroll_events = false
-mouse_default_cursor_shape = 2
-script = ExtResource("1_p4s1u")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 2

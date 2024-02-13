@@ -1,4 +1,4 @@
-extends MarginContainer
+extends CanvasLayer
 
 signal play_reload_toggled(state: bool)
 signal undo_pressed()
