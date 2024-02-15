@@ -47,7 +47,7 @@ Example 1:
   },
   "goal": {
     "position_x": 500,
-    "position_y": 1300
+    "position_y": 920
   },
   "max_lines": 1,
   "obstacles": [
@@ -55,9 +55,9 @@ Example 1:
     { "end_point_x": 500, "end_point_y": 500, "start_point_x": 300, "start_point_y": 500 },
     { "end_point_x": 300, "end_point_y": 900, "start_point_x": 100, "start_point_y": 700 },
     { "end_point_x": 600, "end_point_y": 1000, "start_point_x": 400, "start_point_y": 800 },
-    { "end_point_x": 900, "end_point_y": 1300, "start_point_x": 700, "start_point_y": 1100 },
-    { "end_point_x": 400, "end_point_y": 1440, "start_point_x": 200, "start_point_y": 1400 },
-    { "end_point_x": 700, "end_point_y": 1440, "start_point_x": 500, "start_point_y": 1440 }
+    { "end_point_x": 900, "end_point_y": 920, "start_point_x": 700, "start_point_y": 900 },
+    { "end_point_x": 400, "end_point_y": 760, "start_point_x": 200, "start_point_y": 920 },
+    { "end_point_x": 700, "end_point_y": 760, "start_point_x": 500, "start_point_y": 760 }
   ]
 }
 
@@ -69,15 +69,15 @@ Example 2:
   },
   "goal": {
     "position_x": 300,
-    "position_y": 1300
+    "position_y": 920
   },
   "max_lines": 1,
   "obstacles": [
     { "end_point_x": 200, "end_point_y": 400, "start_point_x": 400, "start_point_y": 200 },
     { "end_point_x": 800, "end_point_y": 600, "start_point_x": 600, "start_point_y": 600 },
     { "end_point_x": 400, "end_point_y": 1000, "start_point_x": 200, "start_point_y": 800 },
-    { "end_point_x": 800, "end_point_y": 1200, "start_point_x": 600, "start_point_y": 1000 },
-    { "end_point_x": 400, "end_point_y": 1200, "start_point_x": 200, "start_point_y": 1200 }
+    { "end_point_x": 800, "end_point_y": 860, "start_point_x": 600, "start_point_y": 1000 },
+    { "end_point_x": 400, "end_point_y": 860, "start_point_x": 200, "start_point_y": 860 }
   ]
 }
 
@@ -97,13 +97,13 @@ Example 3:
     { "end_point_x": 500, "end_point_y": 500, "start_point_x": 300, "start_point_y": 500 },
     { "end_point_x": 400, "end_point_y": 900, "start_point_x": 200, "start_point_y": 700 },
     { "end_point_x": 600, "end_point_y": 1000, "start_point_x": 400, "start_point_y": 800 },
-    { "end_point_x": 900, "end_point_y": 1300, "start_point_x": 700, "start_point_y": 1100 },
-    { "end_point_x": 400, "end_point_y": 1240, "start_point_x": 200, "start_point_y": 1200 },
-    { "end_point_x": 700, "end_point_y": 1240, "start_point_x": 500, "start_point_y": 1240 }
+    { "end_point_x": 900, "end_point_y": 920, "start_point_x": 700, "start_point_y": 900 },
+    { "end_point_x": 400, "end_point_y": 980, "start_point_x": 200, "start_point_y": 860 },
+    { "end_point_x": 700, "end_point_y": 980, "start_point_x": 500, "start_point_y": 980 }
   ]
 }
 
-The maximum level size could be 1080x1440 pixels. Generate a new level within
+The maximum level size could be 1080x1080 pixels. Generate a new level within
 that range for the x and y axis and respond with only JSON. Remove any
 formatting like newlines and tabs.
 """
