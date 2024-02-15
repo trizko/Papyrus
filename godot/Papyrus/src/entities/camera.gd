@@ -5,6 +5,7 @@ signal rotate_finished()
 var target_rotation = 0
 
 func _process(_delta):
+	position = lerp(position, Vector2(540, 540), 0.5)
 	if target_rotation > rotation:
 		rotation = lerp_angle(rotation, target_rotation, 0.05)
 
