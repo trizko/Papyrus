@@ -15,9 +15,9 @@ var Ball = null
 var rotation_index = 0
 var rotation_map = [
 	Vector2.DOWN,
-	Vector2.LEFT,
-	Vector2.UP,
 	Vector2.RIGHT,
+	Vector2.UP,
+	Vector2.LEFT,
 ]
 
 func _ready():
@@ -127,11 +127,10 @@ func _on_ui_undo_pressed():
 		line.queue_free()
 
 func _on_camera_rotate_finished():
-	Ball.gravity_scale = 1.0
-	rotation_index += 1
-	rotation_index = rotation_index % 4
+	rotation_index = (rotation_index + 1) % 4
 	PhysicsServer2D.area_set_param(
 		get_viewport().world_2d.space,
 		PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR,
 		rotation_map[rotation_index]
 	)
+	Ball.gravity_scale = 1.0
