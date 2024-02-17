@@ -26,20 +26,21 @@ func _ready():
 	%HTTPRequest.request(GlobalEnvironment.get_route("levels/"))
 
 func _unhandled_input(event):
+	var world_position = get_global_mouse_position()
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if line_count >= max_lines:
 			return
 		if event.pressed:
 			current_line_instance = line_scene.instantiate()
 			add_child(current_line_instance)
-			current_line_instance.start_drawing(event.position)
+			current_line_instance.start_drawing(world_position)
 		elif current_line_instance:
 			current_line_instance.finish_drawing()
 			current_line_instance = null
 			line_count = line_count + 1
 			lines_left.emit(max_lines - line_count)
 	elif event is InputEventMouseMotion and current_line_instance:
-		current_line_instance.update_drawing(event.position)
+		current_line_instance.update_drawing(world_position)
 
 func _on_body_entered(body):
 	if body.is_in_group("obstacle"):
