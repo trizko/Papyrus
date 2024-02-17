@@ -2,6 +2,7 @@ extends Node2D
 
 signal lines_left(lines_left: int)
 signal trigger_rotatation()
+signal reset_camera()
 
 var line_scene = preload("res://src/entities/line.tscn")
 var ball_scene = preload("res://src/entities/ball/object.tscn")
@@ -57,6 +58,16 @@ func reset_ball(pos):
 	Ball.gravity_scale = 0.0
 	Ball.physics_material_override.bounce = GlobalEnvironment.bounciness
 	Ball.body_entered.connect(_on_body_entered)
+	reset_rotation()
+
+func reset_rotation():
+	rotation_index = 0
+	PhysicsServer2D.area_set_param(
+		get_viewport().world_2d.space,
+		PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR,
+		rotation_map[rotation_index]
+	)
+	reset_camera.emit()
 
 func reset_level():
 	var rating_scene = load("res://src/ui/rating.tscn")

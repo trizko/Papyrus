@@ -13,3 +13,6 @@ func _on_level_trigger_rotatation():
 	target_rotation -= PI/2
 	await get_tree().create_timer(0.5).timeout
 	rotate_finished.emit()
+
+func _on_level_reset_camera():
+	target_rotation = 0

@@ -25,4 +25,5 @@ position = Vector2(540, 959)
 [connection signal="skip_button_pressed" from="Camera/UI" to="Level" method="_on_ui_skip_button_pressed"]
 [connection signal="undo_pressed" from="Camera/UI" to="Level" method="_on_ui_undo_pressed"]
 [connection signal="lines_left" from="Level" to="Camera/UI" method="_on_level_lines_left"]
+[connection signal="reset_camera" from="Level" to="Camera" method="_on_level_reset_camera"]
 [connection signal="trigger_rotatation" from="Level" to="Camera" method="_on_level_trigger_rotatation"]
