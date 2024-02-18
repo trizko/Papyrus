@@ -20,6 +20,7 @@ var rotation_map = [
 	Vector2.UP,
 	Vector2.LEFT,
 ]
+var last_touched_obstacle = null
 
 func _ready():
 	%HTTPRequest.request_completed.connect(_on_request_completed)
@@ -43,7 +44,8 @@ func _unhandled_input(event):
 		current_line_instance.update_drawing(world_position)
 
 func _on_body_entered(body):
-	if body.is_in_group("obstacle"):
+	if body.is_in_group("obstacle") and last_touched_obstacle != body:
+		last_touched_obstacle = body
 		Ball.gravity_scale = 0.0
 		Ball.linear_velocity = Vector2.ZERO
 		trigger_rotatation.emit()
