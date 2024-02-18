@@ -55,6 +55,7 @@ func _on_body_entered(body):
 		reset_level()
 
 func reset_ball(pos):
+	last_touched_obstacle = null
 	Ball = ball_scene.instantiate()
 	Ball.set_position(pos)
 	add_child(Ball)
