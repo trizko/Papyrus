@@ -46,12 +46,10 @@ func _unhandled_input(event):
 func _on_body_entered(body):
 	if body.is_in_group("obstacle") and last_touched_obstacle != body:
 		last_touched_obstacle = body
-		Ball.gravity_scale = 0.0
-		Ball.linear_velocity = Vector2.ZERO
+		stop_ball()
 		trigger_rotatation.emit()
 	if body.name == "Goal":
-		Ball.gravity_scale = 0.0
-		Ball.linear_velocity = Vector2.ZERO
+		stop_ball()
 		reset_level()
 
 func reset_ball(pos):
@@ -76,6 +74,10 @@ func reset_rotation():
 func reset_level():
 	var rating_scene = load("res://src/ui/rating.tscn")
 	get_tree().call_deferred("change_scene_to_packed", rating_scene)
+
+func stop_ball():
+	Ball.gravity_scale = 0.0
+	Ball.linear_velocity = Vector2.ZERO
 
 func _on_request_completed(_result, _response_code, _headers, body):
 	var level_json = JSON.parse_string(body.get_string_from_utf8())
