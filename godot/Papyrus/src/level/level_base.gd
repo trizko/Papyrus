@@ -23,8 +23,14 @@ var rotation_map = [
 var last_touched_obstacle = null
 
 func _ready():
-	%HTTPRequest.request_completed.connect(_on_request_completed)
-	%HTTPRequest.request(GlobalEnvironment.get_route("levels/"))
+	# read level data from api
+	# %HTTPRequest.request_completed.connect(_on_request_completed)
+	# %HTTPRequest.request(GlobalEnvironment.get_route("levels/"))
+	
+	# read level data from file
+	var level_json = FileAccess.get_file_as_bytes("res://src/level/level.json")
+	level_json = JSON.parse_string(level_json.get_string_from_utf8())
+	_initialize_level(level_json)
 
 func _unhandled_input(event):
 	var world_position = get_global_mouse_position()
