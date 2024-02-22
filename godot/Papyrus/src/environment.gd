@@ -3,7 +3,7 @@ extends Node
 var level_json: String
 
 # level modifiers
-var bounciness: float = 0.0
+var bounciness: float = 1.0
 var generated_levels: bool = true
 
 # const base_url: String = "http://localhost:8000"
