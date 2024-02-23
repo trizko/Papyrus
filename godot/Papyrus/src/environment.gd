@@ -5,6 +5,7 @@ var level_json: String
 # level modifiers
 var bounciness: float = 1.0
 var generated_levels: bool = true
+var level_number: int = -1
 
 # const base_url: String = "http://localhost:8000"
 const base_url: String = "http://165.232.135.113:8000"

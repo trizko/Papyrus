@@ -27,9 +27,10 @@ func _ready():
 		%HTTPRequest.request_completed.connect(_on_request_completed)
 		%HTTPRequest.request(GlobalEnvironment.get_route("levels/"))
 	else:
-		var level_json = FileAccess.get_file_as_bytes("res://src/level/level.json")
+		var level_json = FileAccess.get_file_as_bytes("res://src/level/levels.json")
 		level_json = JSON.parse_string(level_json.get_string_from_utf8())
-		_initialize_level(level_json)
+		GlobalEnvironment.level_number += 1
+		_initialize_level(level_json[GlobalEnvironment.level_number])
 
 func _unhandled_input(event):
 	var world_position = get_global_mouse_position()
