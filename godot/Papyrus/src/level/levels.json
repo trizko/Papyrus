@@ -25,5 +25,54 @@
       { "start_point_x": 540, "start_point_y": 100, "end_point_x": 540, "end_point_y": 600 },
       { "start_point_x": 270, "start_point_y": 800, "end_point_x": 810, "end_point_y": 800 }
     ]
+  },
+  {
+    "max_lines": 2,
+    "ball": {
+      "position_x": 100,
+      "position_y": 720
+    },
+    "goal": {
+      "position_x": 800,
+      "position_y": 200
+    },
+    "obstacles": [
+      { "start_point_x": 540, "start_point_y": 100, "end_point_x": 540, "end_point_y": 600 },
+      { "start_point_x": 900, "start_point_y": 300, "end_point_x": 900, "end_point_y": 900 },
+      { "start_point_x": 270, "start_point_y": 800, "end_point_x": 810, "end_point_y": 800 }
+    ]
+  },
+  {
+    "max_lines": 3,
+    "ball": {
+      "position_x": 100,
+      "position_y": 100
+    },
+    "goal": {
+      "position_x": 1000,
+      "position_y": 900
+    },
+    "obstacles": [
+      { "start_point_x": 540, "start_point_y": 100, "end_point_x": 540, "end_point_y": 600 },
+      { "start_point_x": 900, "start_point_y": 300, "end_point_x": 900, "end_point_y": 900 },
+      { "start_point_x": 270, "start_point_y": 800, "end_point_x": 810, "end_point_y": 800 }
+    ]
+  },
+  {
+    "max_lines": 3,
+    "ball": {
+      "position_x": 100,
+      "position_y": 100
+    },
+    "goal": {
+      "position_x": 1000,
+      "position_y": 900
+    },
+    "obstacles": [
+      { "start_point_x": 540, "start_point_y": 100, "end_point_x": 540, "end_point_y": 600 },
+      { "start_point_x": 900, "start_point_y": 300, "end_point_x": 900, "end_point_y": 900 },
+      { "start_point_x": 270, "start_point_y": 800, "end_point_x": 810, "end_point_y": 800 },
+      { "start_point_x": 100, "start_point_y": 300, "end_point_x": 100, "end_point_y": 900 }
+    ]
   }
 ]
