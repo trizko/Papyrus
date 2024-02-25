@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6eka4fbdvbk3"]
+
+[ext_resource type="Shader" path="res://src/entities/goal/goal.gdshader" id="1_dbkom"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cjuwt"]
+radius = 50.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lhrsg"]
+shader = ExtResource("1_dbkom")
+
+[node name="Goal" type="StaticBody2D"]
+position = Vector2(-50, -50)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(50, 50)
+shape = SubResource("CircleShape2D_cjuwt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_lhrsg")
+offset_right = 100.0
+offset_bottom = 100.0

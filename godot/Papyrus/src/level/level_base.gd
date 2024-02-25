@@ -7,7 +7,7 @@ signal reset_camera()
 var line_scene = preload("res://src/entities/line.tscn")
 var ball_scene = preload("res://src/entities/ball/object.tscn")
 var obstacle_scene = preload("res://src/entities/obstacle.tscn")
-var goal_scene = preload("res://src/entities/goal.tscn")
+var goal_scene = preload("res://src/entities/goal/goal.tscn")
 var line_count = 0
 var max_lines = 0
 var ball_start_position = null
