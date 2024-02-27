@@ -1,8 +1,6 @@
 shader_type canvas_item;
 
-const vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
 const vec4 pink = vec4(1.0, 0.75, 0.79, 1.0);
-const vec4 purple = vec4(0.5, 0.0, 0.5, 1.0);
 const vec4 transparent = vec4(0.0);
 
 void fragment() {
@@ -11,9 +9,7 @@ void fragment() {
     float theta = atan(uv.y, uv.x);  
     if (r > 1.0) {
         COLOR = transparent;
-    } else if (r > 0.95) {
-        COLOR = pink;
     } else {
-        COLOR = fract(2.5 * theta / PI + 7.0 * pow(r, 0.4) - 1.8 * TIME) < 0.5 ? black : purple;
+        COLOR = fract(2.5 * theta / PI + 7.0 * pow(r, 0.4) - 1.8 * TIME) < 0.5 ? pink : transparent;
     }
 }
