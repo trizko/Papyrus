@@ -18,8 +18,8 @@
       "position_y": 100
     },
     "goal": {
-      "position_x": 1000,
-      "position_y": 790
+      "position_x": 960,
+      "position_y": 700
     },
     "obstacles": [
       { "start_point_x": 540, "start_point_y": 100, "end_point_x": 540, "end_point_y": 600 },
